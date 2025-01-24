@@ -1,0 +1,9 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.146.200.93:3306/online_education
+    username: root
+    password: Aa112233#
+server:
+  port: 8888
