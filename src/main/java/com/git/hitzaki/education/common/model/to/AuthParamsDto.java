@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.common.model;
+package com.git.hitzaki.education.common.model.to;
 
 import lombok.Data;
 

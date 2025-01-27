@@ -5,5 +5,13 @@ spring:
     url: jdbc:mysql://8.146.200.93:3306/online_education
     username: root
     password: Aa112233#
+
+  redis:
+    database: 0
+    host: 8.146.200.93
+    port: 6379
+    password: Aa112233#
+    timeout: 5s
+    connect-timeout: 5s
 server:
   port: 8888
