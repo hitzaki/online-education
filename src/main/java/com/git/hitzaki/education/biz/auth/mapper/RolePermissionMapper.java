@@ -1,7 +1,7 @@
 package com.git.hitzaki.education.biz.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.auth.entity.RolePermission;
+import com.git.hitzaki.education.biz.auth.entity.RolePermissionEntity;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.git.hitzaki.education.biz.auth.entity.RolePermission;
  * @author author
  * @since 2025-01-26
  */
-public interface RolePermissionMapper extends BaseMapper<RolePermission> {
+public interface RolePermissionMapper extends BaseMapper<RolePermissionEntity> {
 
 }

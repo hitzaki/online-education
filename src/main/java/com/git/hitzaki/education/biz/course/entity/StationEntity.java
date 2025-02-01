@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("station")
-public class Station implements Serializable {
+public class StationEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

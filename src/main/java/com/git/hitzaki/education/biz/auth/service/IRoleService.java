@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.auth.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.auth.entity.Role;
+import com.git.hitzaki.education.biz.auth.entity.RoleEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.auth.entity.Role;
  * @author author
  * @since 2025-01-26
  */
-public interface IRoleService extends IService<Role> {
+public interface IRoleService extends IService<RoleEntity> {
 
 }

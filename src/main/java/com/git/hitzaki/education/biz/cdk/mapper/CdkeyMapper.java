@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.cdk.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.cdk.entity.Cdkey;
+import com.git.hitzaki.education.biz.cdk.entity.CdkeyEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.cdk.entity.Cdkey;
  * @author author
  * @since 2025-01-26
  */
-public interface CdkeyMapper extends BaseMapper<Cdkey> {
+public interface CdkeyMapper extends BaseMapper<CdkeyEntity> {
 
 }

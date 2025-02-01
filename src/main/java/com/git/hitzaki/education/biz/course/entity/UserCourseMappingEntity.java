@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.auth.entity;
+package com.git.hitzaki.education.biz.course.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 管理员账号表
+ * 用户课程映射表
  * </p>
  *
  * @author author
@@ -20,50 +20,26 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("admin_account_info")
-public class AdminAccountInfo implements Serializable {
+@TableName("user_course_mapping")
+public class UserCourseMappingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 类型0管理员1 业务员
+     * 课程id
      */
-    private Boolean type;
+    private Long courseId;
 
     /**
-     * 手机
+     * 用户id
      */
-    private String phone;
-
-    /**
-     * 账号
-     */
-    private String account;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 昵称
-     */
-    private String nickName;
-
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
-     * 状态 0正常 1停用 .................. 
-     */
-    private Integer status;
-
-    private Integer deleteFlag;
+    private Long userId;
 
     /**
      * 创建时间

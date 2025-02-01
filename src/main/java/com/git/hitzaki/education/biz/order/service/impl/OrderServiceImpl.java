@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.order.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.order.entity.Order;
+import com.git.hitzaki.education.biz.order.entity.OrderEntity;
 import com.git.hitzaki.education.biz.order.mapper.OrderMapper;
 import com.git.hitzaki.education.biz.order.service.IOrderService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements IOrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> implements IOrderService {
 
 }

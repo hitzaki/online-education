@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.auth.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.auth.entity.UserInfo;
+import com.git.hitzaki.education.biz.auth.entity.UserInfoEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.auth.entity.UserInfo;
  * @author author
  * @since 2025-01-26
  */
-public interface IUserInfoService extends IService<UserInfo> {
+public interface IUserInfoService extends IService<UserInfoEntity> {
 
 }

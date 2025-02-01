@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.stat.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.stat.entity.StatDay;
+import com.git.hitzaki.education.biz.stat.entity.StatDayEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.stat.entity.StatDay;
  * @author author
  * @since 2025-01-26
  */
-public interface IStatDayService extends IService<StatDay> {
+public interface IStatDayService extends IService<StatDayEntity> {
 
 }

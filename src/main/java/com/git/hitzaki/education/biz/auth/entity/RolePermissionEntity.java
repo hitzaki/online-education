@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("role_permission")
-public class RolePermission implements Serializable {
+public class RolePermissionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

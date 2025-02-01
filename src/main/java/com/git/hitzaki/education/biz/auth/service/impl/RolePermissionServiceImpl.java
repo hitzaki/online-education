@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.auth.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.auth.entity.RolePermission;
+import com.git.hitzaki.education.biz.auth.entity.RolePermissionEntity;
 import com.git.hitzaki.education.biz.auth.mapper.RolePermissionMapper;
 import com.git.hitzaki.education.biz.auth.service.IRolePermissionService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, RolePermission> implements IRolePermissionService {
+public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, RolePermissionEntity> implements IRolePermissionService {
 
 }

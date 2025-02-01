@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.tag.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 学习路线
+ * 标签映射表
  * </p>
  *
  * @author author
@@ -20,8 +20,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("learn_path")
-public class LearnPath implements Serializable {
+@TableName("tag_mapping")
+public class TagMappingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,20 +32,24 @@ public class LearnPath implements Serializable {
     private Long id;
 
     /**
-     * 学习路线表题
+     * 标签id
      */
-    private String title;
+    private Long tagId;
 
     /**
-     * 简介
+     * 目标id
      */
-    private String description;
+    private Long targetId;
 
-    private LocalDateTime updateTime;
-
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
 
-    private Integer deleteFlag;
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
 
 }

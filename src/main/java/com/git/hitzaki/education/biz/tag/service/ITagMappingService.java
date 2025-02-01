@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.tag.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.tag.entity.TagMapping;
+import com.git.hitzaki.education.biz.tag.entity.TagMappingEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.tag.entity.TagMapping;
  * @author author
  * @since 2025-01-26
  */
-public interface ITagMappingService extends IService<TagMapping> {
+public interface ITagMappingService extends IService<TagMappingEntity> {
 
 }

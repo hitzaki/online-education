@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.course.entity.Subject;
+import com.git.hitzaki.education.biz.course.entity.SubjectEntity;
 import com.git.hitzaki.education.biz.course.mapper.SubjectMapper;
 import com.git.hitzaki.education.biz.course.service.ISubjectService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> implements ISubjectService {
+public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, SubjectEntity> implements ISubjectService {
 
 }

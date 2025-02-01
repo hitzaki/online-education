@@ -1,10 +1,9 @@
-package com.git.hitzaki.education.biz.teacher.entity;
+package com.git.hitzaki.education.biz.course.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 讲师
+ * 课程章节/小节
  * </p>
  *
  * @author author
@@ -21,8 +20,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("teacher")
-public class Teacher implements Serializable {
+@TableName("chapter")
+public class ChapterEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,45 +32,25 @@ public class Teacher implements Serializable {
     private Long id;
 
     /**
-     * 讲师姓名
+     * 课程ID
      */
-    private String name;
+    private Long courseId;
 
     /**
-     * 讲师简介
+     * 章节名称
      */
-    private String intro;
+    private String title;
 
     /**
-     * 讲师资历, 一句话说明讲师
-     */
-    private String career;
-
-    /**
-     * 头衔 1高级讲师 2首席讲师
-     */
-    private Integer level;
-
-    /**
-     * 讲师头像
-     */
-    private String avatar;
-
-    /**
-     * 排序
+     * 显示排序
      */
     private Integer sort;
 
-    /**
-     * 入驻时间
-     */
-    private LocalDate joinDate;
-
     private LocalDateTime updateTime;
 
-    private Integer deleteFlag;
-
     private LocalDateTime createTime;
+
+    private Integer deleteFlag;
 
 
 }

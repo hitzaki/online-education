@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.cdk.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.cdk.entity.CdkHistory;
+import com.git.hitzaki.education.biz.cdk.entity.CdkHistoryEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.cdk.entity.CdkHistory;
  * @author author
  * @since 2025-01-26
  */
-public interface ICdkHistoryService extends IService<CdkHistory> {
+public interface ICdkHistoryService extends IService<CdkHistoryEntity> {
 
 }

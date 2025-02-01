@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.course.entity.Subject;
+import com.git.hitzaki.education.biz.course.entity.SubjectEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.course.entity.Subject;
  * @author author
  * @since 2025-01-26
  */
-public interface SubjectMapper extends BaseMapper<Subject> {
+public interface SubjectMapper extends BaseMapper<SubjectEntity> {
 
 }

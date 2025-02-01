@@ -2,6 +2,7 @@ package com.git.hitzaki.education.biz.course.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ * 课程科目
  * </p>
  *
  * @author author
@@ -19,46 +20,37 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("company")
-public class Company implements Serializable {
+@TableName("subject")
+public class SubjectEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 公司名称
+     * 类别名称
      */
-    private String name;
+    private String title;
 
     /**
-     * 公司logo
+     * 父ID
      */
-    private String logo;
+    private Long parentId;
 
     /**
-     * 最小规模
+     * 排序字段
      */
-    private Integer minScale;
+    private Integer sort;
 
-    /**
-     * 最大规模
-     */
-    private Integer maxScale;
+    private LocalDateTime updateTime;
 
-    /**
-     * 公司类型
-     */
-    private Long subjectId;
+    private Integer deleteFlag;
 
-    /**
-     * 公司上市阶段
-     */
-    private Integer stage;
+    private LocalDateTime createTime;
 
 
 }

@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.order.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.order.entity.PaymentInfo;
+import com.git.hitzaki.education.biz.order.entity.PaymentInfoEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.order.entity.PaymentInfo;
  * @author author
  * @since 2025-01-26
  */
-public interface IPaymentInfoService extends IService<PaymentInfo> {
+public interface IPaymentInfoService extends IService<PaymentInfoEntity> {
 
 }

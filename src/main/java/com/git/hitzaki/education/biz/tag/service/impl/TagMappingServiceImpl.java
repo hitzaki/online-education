@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.tag.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.tag.entity.TagMapping;
+import com.git.hitzaki.education.biz.tag.entity.TagMappingEntity;
 import com.git.hitzaki.education.biz.tag.mapper.TagMappingMapper;
 import com.git.hitzaki.education.biz.tag.service.ITagMappingService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class TagMappingServiceImpl extends ServiceImpl<TagMappingMapper, TagMapping> implements ITagMappingService {
+public class TagMappingServiceImpl extends ServiceImpl<TagMappingMapper, TagMappingEntity> implements ITagMappingService {
 
 }

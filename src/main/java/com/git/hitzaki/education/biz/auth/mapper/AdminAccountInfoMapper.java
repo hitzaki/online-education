@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.auth.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfo;
+import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfo;
  * @author author
  * @since 2025-01-26
  */
-public interface AdminAccountInfoMapper extends BaseMapper<AdminAccountInfo> {
+public interface AdminAccountInfoMapper extends BaseMapper<AdminAccountInfoEntity> {
 
 }

@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.cdk.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.cdk.entity.Cdkey;
+import com.git.hitzaki.education.biz.cdk.entity.CdkeyEntity;
 import com.git.hitzaki.education.biz.cdk.mapper.CdkeyMapper;
 import com.git.hitzaki.education.biz.cdk.service.ICdkeyService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class CdkeyServiceImpl extends ServiceImpl<CdkeyMapper, Cdkey> implements ICdkeyService {
+public class CdkeyServiceImpl extends ServiceImpl<CdkeyMapper, CdkeyEntity> implements ICdkeyService {
 
 }

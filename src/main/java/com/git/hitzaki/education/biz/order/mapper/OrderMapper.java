@@ -1,7 +1,7 @@
 package com.git.hitzaki.education.biz.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.order.entity.Order;
+import com.git.hitzaki.education.biz.order.entity.OrderEntity;
 
 
 /**
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.order.entity.Order;
  * @author author
  * @since 2025-01-26
  */
-public interface OrderMapper extends BaseMapper<Order> {
+public interface OrderMapper extends BaseMapper<OrderEntity> {
 
 }

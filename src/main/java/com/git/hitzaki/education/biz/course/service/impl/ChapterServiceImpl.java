@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.course.entity.Chapter;
+import com.git.hitzaki.education.biz.course.entity.ChapterEntity;
 import com.git.hitzaki.education.biz.course.mapper.ChapterMapper;
 import com.git.hitzaki.education.biz.course.service.IChapterService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> implements IChapterService {
+public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, ChapterEntity> implements IChapterService {
 
 }

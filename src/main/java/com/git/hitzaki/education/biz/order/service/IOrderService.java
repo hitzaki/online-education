@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.order.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.order.entity.Order;
+import com.git.hitzaki.education.biz.order.entity.OrderEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.order.entity.Order;
  * @author author
  * @since 2025-01-26
  */
-public interface IOrderService extends IService<Order> {
+public interface IOrderService extends IService<OrderEntity> {
 
 }

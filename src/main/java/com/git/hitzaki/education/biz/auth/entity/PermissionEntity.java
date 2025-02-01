@@ -1,9 +1,9 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 课程章节/小节
+ * 权限
  * </p>
  *
  * @author author
@@ -20,37 +20,52 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("chapter")
-public class Chapter implements Serializable {
+@TableName("permission")
+public class PermissionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 编号
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 课程ID
+     * 所属上级
      */
-    private Long courseId;
+    private Long parentId;
 
     /**
-     * 章节名称
+     * 名称
      */
-    private String title;
+    private String name;
 
     /**
-     * 显示排序
+     * 名称code
      */
-    private Integer sort;
+    private String code;
+
+    /**
+     * 对应的页面唯一码, 可以没有
+     */
+    private String viewCode;
+
+    /**
+     * 类型(1:菜单,2:按钮)
+     */
+    private Integer type;
+
+    /**
+     * 状态(0:禁止,1:正常)
+     */
+    private Integer status;
+
+    private Integer deleteFlag;
 
     private LocalDateTime updateTime;
 
     private LocalDateTime createTime;
-
-    private Integer deleteFlag;
 
 
 }

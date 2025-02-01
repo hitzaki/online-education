@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.order.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.order.entity.PaymentInfo;
+import com.git.hitzaki.education.biz.order.entity.PaymentInfoEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.order.entity.PaymentInfo;
  * @author author
  * @since 2025-01-26
  */
-public interface PaymentInfoMapper extends BaseMapper<PaymentInfo> {
+public interface PaymentInfoMapper extends BaseMapper<PaymentInfoEntity> {
 
 }

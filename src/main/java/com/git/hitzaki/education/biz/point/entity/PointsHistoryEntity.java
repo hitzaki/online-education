@@ -1,5 +1,6 @@
-package com.git.hitzaki.education.biz.auth.entity;
+package com.git.hitzaki.education.biz.point.entity;
 
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户角色
+ * 积分记录表
  * </p>
  *
  * @author author
@@ -20,30 +21,48 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("user_role")
-public class UserRole implements Serializable {
+@TableName("points_history")
+public class PointsHistoryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键id
+     * id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户/管理员 id
+     * 0增加 1减少
+     */
+    private Integer type;
+
+    /**
+     * 用户id
      */
     private Long userId;
 
     /**
-     * 角色id
+     * 积分数量
      */
-    private Long roleId;
+    private BigDecimal pointsCount;
 
+    /**
+     * 对应操作码--后端枚举维护
+     */
+    private String operationCode;
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
     private LocalDateTime updateTime;
 
-    private LocalDateTime createTime;
+    private Integer deleteFlag;
 
 
 }

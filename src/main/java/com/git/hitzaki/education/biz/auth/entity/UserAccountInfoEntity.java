@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.tag.entity;
+package com.git.hitzaki.education.biz.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 通用标签表
+ * 用户账号表
  * </p>
  *
  * @author author
@@ -20,21 +20,40 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("common_tag")
-public class CommonTag implements Serializable {
+@TableName("user_account_info")
+public class UserAccountInfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 标签名
+     * 手机
      */
-    private String title;
+    private String phone;
+
+    /**
+     * 微信登陆code
+     */
+    private String wechatCode;
+
+    /**
+     * 账号
+     */
+    private String account;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 状态 0正常 1停用 2注销 3黑名单  .................. 
+     */
+    private Integer status;
+
+    private Integer deleteFlag;
 
     /**
      * 创建时间

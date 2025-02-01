@@ -1,7 +1,7 @@
 package com.git.hitzaki.education.biz.tag.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.tag.entity.CommonTag;
+import com.git.hitzaki.education.biz.tag.entity.CommonTagEntity;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.git.hitzaki.education.biz.tag.entity.CommonTag;
  * @author author
  * @since 2025-01-26
  */
-public interface ICommonTagService extends IService<CommonTag> {
+public interface ICommonTagService extends IService<CommonTagEntity> {
 
 }

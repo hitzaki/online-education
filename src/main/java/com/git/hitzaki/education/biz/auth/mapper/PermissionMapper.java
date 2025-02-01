@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.auth.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.auth.entity.Permission;
+import com.git.hitzaki.education.biz.auth.entity.PermissionEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.auth.entity.Permission;
  * @author author
  * @since 2025-01-26
  */
-public interface PermissionMapper extends BaseMapper<Permission> {
+public interface PermissionMapper extends BaseMapper<PermissionEntity> {
 
 }

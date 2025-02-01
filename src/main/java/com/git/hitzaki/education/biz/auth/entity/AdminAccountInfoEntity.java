@@ -1,6 +1,5 @@
-package com.git.hitzaki.education.biz.point.entity;
+package com.git.hitzaki.education.biz.auth.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDateTime;
@@ -12,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 余额记录表
+ * 管理员账号表
  * </p>
  *
  * @author author
@@ -21,36 +20,48 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("balance_history")
-public class BalanceHistory implements Serializable {
+@TableName("admin_account_info")
+public class AdminAccountInfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * id
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 0增加 1减少
+     * 类型0管理员1 业务员
      */
-    private Integer type;
+    private Boolean type;
 
     /**
-     * 用户id
+     * 手机
      */
-    private Long userId;
+    private String phone;
 
     /**
-     * 余额操作数量
+     * 账号
      */
-    private BigDecimal amount;
+    private String account;
 
     /**
-     * 对应操作码--后端枚举维护
+     * 密码
      */
-    private String operationCode;
+    private String password;
+
+    /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
+    /**
+     * 状态 0正常 1停用 .................. 
+     */
+    private Integer status;
 
     private Integer deleteFlag;
 

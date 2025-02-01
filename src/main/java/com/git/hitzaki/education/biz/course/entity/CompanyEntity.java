@@ -2,7 +2,6 @@ package com.git.hitzaki.education.biz.course.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
@@ -20,32 +19,46 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("course_path_mapping")
-public class CoursePathMapping implements Serializable {
+@TableName("company")
+public class CompanyEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 课程
+     * 公司名称
      */
-    private Long courseId;
+    private String name;
 
     /**
-     * 学习路线
+     * 公司logo
      */
-    private Long pathId;
+    private String logo;
 
     /**
-     * 排序
+     * 最小规模
      */
-    private Integer sort;
+    private Integer minScale;
 
-    private LocalDateTime createTime;
+    /**
+     * 最大规模
+     */
+    private Integer maxScale;
 
-    private LocalDateTime updateTime;
+    /**
+     * 公司类型
+     */
+    private Long subjectId;
+
+    /**
+     * 公司上市阶段
+     */
+    private Integer stage;
 
 
 }

@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.tag.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.tag.entity.TagMapping;
+import com.git.hitzaki.education.biz.tag.entity.TagMappingEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.tag.entity.TagMapping;
  * @author author
  * @since 2025-01-26
  */
-public interface TagMappingMapper extends BaseMapper<TagMapping> {
+public interface TagMappingMapper extends BaseMapper<TagMappingEntity> {
 
 }

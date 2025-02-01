@@ -1,9 +1,9 @@
-package com.git.hitzaki.education.biz.cdk.entity;
+package com.git.hitzaki.education.biz.video.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 电子兑换码记录表
+ * 观看历史记录表
  * </p>
  *
  * @author author
@@ -20,43 +20,42 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("cdk_history")
-public class CdkHistory implements Serializable {
+@TableName("video_view_history")
+public class VideoViewHistoryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * cdk
-     */
-    private Long cdkId;
-
-    /**
      * 用户id
      */
-    private Long userId;
+    private String userId;
 
     /**
-     * 兑换时间
+     * 视频id
      */
-    private LocalDateTime operationDate;
+    private Long videoId;
 
     /**
-     * 创建时间
+     * 看到了哪一帧，回退也算
      */
-    private LocalDateTime createTime;
+    private Integer time;
 
     /**
-     * 更新时间
+     * 日期
      */
-    private LocalDateTime updateTime;
+    private LocalDateTime date;
 
     private Integer deleteFlag;
+
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
 
 }

@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户课程映射表
+ * 
  * </p>
  *
  * @author author
@@ -20,35 +20,31 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("user_course_mapping")
-public class UserCourseMapping implements Serializable {
+@TableName("course_path_mapping")
+public class CoursePathMappingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 课程id
+     * 课程
      */
     private Long courseId;
 
     /**
-     * 用户id
+     * 学习路线
      */
-    private Long userId;
+    private Long pathId;
 
     /**
-     * 创建时间
+     * 排序
      */
+    private Integer sort;
+
     private LocalDateTime createTime;
 
-    /**
-     * 更新时间
-     */
     private LocalDateTime updateTime;
 
 

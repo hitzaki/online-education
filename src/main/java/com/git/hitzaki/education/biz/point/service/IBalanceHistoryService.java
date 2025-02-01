@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.point.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.point.entity.BalanceHistory;
+import com.git.hitzaki.education.biz.point.entity.BalanceHistoryEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.point.entity.BalanceHistory;
  * @author author
  * @since 2025-01-26
  */
-public interface IBalanceHistoryService extends IService<BalanceHistory> {
+public interface IBalanceHistoryService extends IService<BalanceHistoryEntity> {
 
 }

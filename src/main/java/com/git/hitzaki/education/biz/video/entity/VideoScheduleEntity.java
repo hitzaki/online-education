@@ -1,9 +1,9 @@
-package com.git.hitzaki.education.biz.tag.entity;
+package com.git.hitzaki.education.biz.video.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 标签映射表
+ * 观看记录表
  * </p>
  *
  * @author author
@@ -20,8 +20,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("tag_mapping")
-public class TagMapping implements Serializable {
+@TableName("video_schedule")
+public class VideoScheduleEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,24 +32,25 @@ public class TagMapping implements Serializable {
     private Long id;
 
     /**
-     * 标签id
+     * 用户id
      */
-    private Long tagId;
+    private String userId;
 
     /**
-     * 目标id
+     * 视频id
      */
-    private Long targetId;
+    private Long videoId;
 
     /**
-     * 创建时间
+     * 看到了哪一帧，回退不算，仅记录最靠后的那一帧
      */
+    private String time;
+
+    private LocalDateTime updateTime;
+
     private LocalDateTime createTime;
 
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
+    private Integer deleteFlag;
 
 
 }

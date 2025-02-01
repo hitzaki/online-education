@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.course.entity.LearnPathDetail;
+import com.git.hitzaki.education.biz.course.entity.LearnPathDetailEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.course.entity.LearnPathDetail;
  * @author author
  * @since 2025-01-26
  */
-public interface LearnPathDetailMapper extends BaseMapper<LearnPathDetail> {
+public interface LearnPathDetailMapper extends BaseMapper<LearnPathDetailEntity> {
 
 }

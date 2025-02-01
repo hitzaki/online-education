@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.course.entity.LearnPathDetail;
+import com.git.hitzaki.education.biz.course.entity.LearnPathDetailEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.course.entity.LearnPathDetail;
  * @author author
  * @since 2025-01-26
  */
-public interface ILearnPathDetailService extends IService<LearnPathDetail> {
+public interface ILearnPathDetailService extends IService<LearnPathDetailEntity> {
 
 }

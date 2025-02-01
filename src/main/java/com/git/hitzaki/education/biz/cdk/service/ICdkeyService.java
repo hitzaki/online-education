@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.cdk.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.cdk.entity.Cdkey;
+import com.git.hitzaki.education.biz.cdk.entity.CdkeyEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.cdk.entity.Cdkey;
  * @author author
  * @since 2025-01-26
  */
-public interface ICdkeyService extends IService<Cdkey> {
+public interface ICdkeyService extends IService<CdkeyEntity> {
 
 }

@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.order.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.order.entity.PaymentInfo;
+import com.git.hitzaki.education.biz.order.entity.PaymentInfoEntity;
 import com.git.hitzaki.education.biz.order.mapper.PaymentInfoMapper;
 import com.git.hitzaki.education.biz.order.service.IPaymentInfoService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class PaymentInfoServiceImpl extends ServiceImpl<PaymentInfoMapper, PaymentInfo> implements IPaymentInfoService {
+public class PaymentInfoServiceImpl extends ServiceImpl<PaymentInfoMapper, PaymentInfoEntity> implements IPaymentInfoService {
 
 }

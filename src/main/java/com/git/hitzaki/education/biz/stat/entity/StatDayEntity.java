@@ -1,9 +1,9 @@
-package com.git.hitzaki.education.biz.video.entity;
+package com.git.hitzaki.education.biz.stat.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 观看记录表
+ * 统计表
  * </p>
  *
  * @author author
@@ -20,37 +20,28 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("video_schedule")
-public class VideoSchedule implements Serializable {
+@TableName("stat_day")
+public class StatDayEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户id
+     * 新增用户量
      */
-    private String userId;
+    private Integer userNum;
 
     /**
-     * 视频id
+     * 今日交易金额
      */
-    private Long videoId;
+    private Integer tradeAmount;
 
     /**
-     * 看到了哪一帧，回退不算，仅记录最靠后的那一帧
+     * 日期
      */
-    private String time;
-
-    private LocalDateTime updateTime;
-
-    private LocalDateTime createTime;
-
-    private Integer deleteFlag;
+    private LocalDate statDate;
 
 
 }

@@ -1,8 +1,8 @@
-package com.git.hitzaki.education.biz.auth.entity;
+package com.git.hitzaki.education.biz.teacher.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户个人信息表
+ * 讲师
  * </p>
  *
  * @author author
@@ -21,65 +21,57 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("user_info")
-public class UserInfo implements Serializable {
+@TableName("teacher")
+public class TeacherEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 编号
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户id
+     * 讲师姓名
      */
-    private Long accountId;
+    private String name;
 
     /**
-     * 昵称
+     * 讲师简介
      */
-    private String nickName;
+    private String intro;
 
     /**
-     * 性别
+     * 讲师资历, 一句话说明讲师
      */
-    private Integer sex;
+    private String career;
 
     /**
-     * 头像
+     * 头衔 1高级讲师 2首席讲师
+     */
+    private Integer level;
+
+    /**
+     * 讲师头像
      */
     private String avatar;
 
     /**
-     * 会员等级0 普通用户
+     * 排序
      */
-    private Integer vipType;
+    private Integer sort;
 
     /**
-     * 余额
+     * 入驻时间
      */
-    private BigDecimal balance;
-
-    /**
-     * 积分
-     */
-    private BigDecimal points;
-
-    /**
-     * 推荐人用户id
-     */
-    private Long recommendId;
-
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+    private LocalDate joinDate;
 
     private LocalDateTime updateTime;
 
     private Integer deleteFlag;
+
+    private LocalDateTime createTime;
 
 
 }

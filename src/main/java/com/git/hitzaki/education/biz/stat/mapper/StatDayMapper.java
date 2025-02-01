@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.stat.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.stat.entity.StatDay;
+import com.git.hitzaki.education.biz.stat.entity.StatDayEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.stat.entity.StatDay;
  * @author author
  * @since 2025-01-26
  */
-public interface StatDayMapper extends BaseMapper<StatDay> {
+public interface StatDayMapper extends BaseMapper<StatDayEntity> {
 
 }

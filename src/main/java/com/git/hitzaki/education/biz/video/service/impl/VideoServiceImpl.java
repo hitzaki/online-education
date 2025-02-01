@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.video.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.video.entity.Video;
+import com.git.hitzaki.education.biz.video.entity.VideoEntity;
 import com.git.hitzaki.education.biz.video.mapper.VideoMapper;
 import com.git.hitzaki.education.biz.video.service.IVideoService;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2025-01-26
  */
 @Service
-public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements IVideoService {
+public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> implements IVideoService {
 
 }

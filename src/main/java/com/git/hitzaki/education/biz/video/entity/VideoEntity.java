@@ -1,6 +1,5 @@
-package com.git.hitzaki.education.biz.order.entity;
+package com.git.hitzaki.education.biz.video.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 支付信息表
+ * 课程视频
  * </p>
  *
  * @author author
@@ -21,68 +20,77 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("payment_info")
-public class PaymentInfo implements Serializable {
+@TableName("video")
+public class VideoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 编号
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-
-    private Long userId;
+    private Long id;
 
     /**
-     * 订单编号
+     * 课程ID
      */
-    private Long orderId;
+    private Long courseId;
 
     /**
-     * 支付金额
+     * 章节ID
      */
-    private BigDecimal totalAmount;
+    private Long chapterId;
 
     /**
-     * 交易内容
+     * 节点名称
      */
-    private String tradeBody;
+    private String title;
 
     /**
-     * 对外业务编号
+     * 视频URL
      */
-    private String outTradeNo;
+    private String videoUrl;
 
     /**
-     * 支付宝交易编号
+     * 原始文件名称
      */
-    private String alipayTradeNo;
+    private String videoOriginalName;
 
     /**
-     * 支付类型
+     * 云端视频资源
      */
-    private Integer paymentType;
+    private String videoSourceId;
 
     /**
-     * 支付状态
+     * 播放次数
      */
-    private Integer paymentStatus;
+    private Long playCount;
 
     /**
-     * 回调时间
+     * 视频源文件大小（字节）
      */
-    private LocalDateTime callbackTime;
+    private Long size;
 
     /**
-     * 回调信息
+     * 视频时长（秒）
      */
-    private String callbackContent;
+    private Float duration;
+
+    /**
+     * 状态
+     */
+    private Integer status;
 
     private Integer deleteFlag;
 
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
 
+    /**
+     * 修改时间
+     */
     private LocalDateTime updateTime;
 
 

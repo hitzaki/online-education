@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.video.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.video.entity.Video;
+import com.git.hitzaki.education.biz.video.entity.VideoEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.video.entity.Video;
  * @author author
  * @since 2025-01-26
  */
-public interface IVideoService extends IService<Video> {
+public interface IVideoService extends IService<VideoEntity> {
 
 }

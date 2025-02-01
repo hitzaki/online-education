@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.teacher.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.teacher.entity.Teacher;
+import com.git.hitzaki.education.biz.teacher.entity.TeacherEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.teacher.entity.Teacher;
  * @author author
  * @since 2025-01-26
  */
-public interface ITeacherService extends IService<Teacher> {
+public interface ITeacherService extends IService<TeacherEntity> {
 
 }

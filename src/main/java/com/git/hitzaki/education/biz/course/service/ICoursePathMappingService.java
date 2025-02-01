@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.course.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.course.entity.CoursePathMapping;
+import com.git.hitzaki.education.biz.course.entity.CoursePathMappingEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.course.entity.CoursePathMapping;
  * @author author
  * @since 2025-01-26
  */
-public interface ICoursePathMappingService extends IService<CoursePathMapping> {
+public interface ICoursePathMappingService extends IService<CoursePathMappingEntity> {
 
 }

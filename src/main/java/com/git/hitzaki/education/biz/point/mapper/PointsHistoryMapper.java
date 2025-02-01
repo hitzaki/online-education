@@ -2,7 +2,7 @@ package com.git.hitzaki.education.biz.point.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.point.entity.PointsHistory;
+import com.git.hitzaki.education.biz.point.entity.PointsHistoryEntity;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.git.hitzaki.education.biz.point.entity.PointsHistory;
  * @author author
  * @since 2025-01-26
  */
-public interface PointsHistoryMapper extends BaseMapper<PointsHistory> {
+public interface PointsHistoryMapper extends BaseMapper<PointsHistoryEntity> {
 
 }

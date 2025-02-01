@@ -1,5 +1,6 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.point.entity;
 
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 课程科目
+ * 余额记录表
  * </p>
  *
  * @author author
@@ -20,37 +21,48 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("subject")
-public class Subject implements Serializable {
+@TableName("balance_history")
+public class BalanceHistoryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 类别名称
+     * 0增加 1减少
      */
-    private String title;
+    private Integer type;
 
     /**
-     * 父ID
+     * 用户id
      */
-    private Long parentId;
+    private Long userId;
 
     /**
-     * 排序字段
+     * 余额操作数量
      */
-    private Integer sort;
+    private BigDecimal amount;
 
-    private LocalDateTime updateTime;
+    /**
+     * 对应操作码--后端枚举维护
+     */
+    private String operationCode;
 
     private Integer deleteFlag;
 
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
 
 }

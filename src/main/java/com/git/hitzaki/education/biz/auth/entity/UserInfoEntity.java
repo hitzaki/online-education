@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.point.entity;
+package com.git.hitzaki.education.biz.auth.entity;
 
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 积分记录表
+ * 用户个人信息表
  * </p>
  *
  * @author author
@@ -21,45 +21,62 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("points_history")
-public class PointsHistory implements Serializable {
+@TableName("user_info")
+public class UserInfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 编号
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 0增加 1减少
-     */
-    private Integer type;
-
-    /**
      * 用户id
      */
-    private Long userId;
+    private Long accountId;
 
     /**
-     * 积分数量
+     * 昵称
      */
-    private BigDecimal pointsCount;
+    private String nickName;
 
     /**
-     * 对应操作码--后端枚举维护
+     * 性别
      */
-    private String operationCode;
+    private Integer sex;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
+    /**
+     * 会员等级0 普通用户
+     */
+    private Integer vipType;
+
+    /**
+     * 余额
+     */
+    private BigDecimal balance;
+
+    /**
+     * 积分
+     */
+    private BigDecimal points;
+
+    /**
+     * 推荐人用户id
+     */
+    private Long recommendId;
 
     /**
      * 创建时间
      */
     private LocalDateTime createTime;
 
-    /**
-     * 更新时间
-     */
     private LocalDateTime updateTime;
 
     private Integer deleteFlag;
