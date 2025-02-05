@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @author hitzaki
  */
 @Configuration
-@MapperScan("com.git.hitzaki.*.mapper")
+@MapperScan("com.git.hitzaki.education.biz.*.mapper")
 public class MybatisPlusConfig {
 	/**
 	 * 新的分页插件
