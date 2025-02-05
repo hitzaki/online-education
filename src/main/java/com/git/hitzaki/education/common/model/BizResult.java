@@ -9,7 +9,7 @@ import lombok.ToString;
  */
  @Data
  @ToString
-public class RestResponse<T> {
+public class BizResult<T> {
 
   /**
    * 响应编码,0为正常,-1错误
@@ -27,11 +27,11 @@ public class RestResponse<T> {
   private T data;
 
 
-  public RestResponse() {
-   this(20000, "success");
+  public BizResult() {
+   this(20000, "操作成功");
   }
 
-  public RestResponse(int code, String msg) {
+  public BizResult(int code, String msg) {
    this.code = code;
    this.msg = msg;
   }
@@ -43,14 +43,14 @@ public class RestResponse<T> {
    * @param <T>
    * @return
    */
-  public static <T> RestResponse<T> validfail(String msg) {
-   RestResponse<T> response = new RestResponse<T>();
+  public static <T> BizResult<T> fail(String msg) {
+   BizResult<T> response = new BizResult<T>();
    response.setCode(-1);
    response.setMsg(msg);
    return response;
   }
-  public static <T> RestResponse<T> validfail(T result,String msg) {
-   RestResponse<T> response = new RestResponse<T>();
+  public static <T> BizResult<T> fail(T result, String msg) {
+   BizResult<T> response = new BizResult<T>();
    response.setCode(-1);
    response.setData(result);
    response.setMsg(msg);
@@ -64,16 +64,22 @@ public class RestResponse<T> {
    *
    * @return RestResponse Rest服务封装相应数据
    */
-  public static <T> RestResponse<T> success(T result) {
-   RestResponse<T> response = new RestResponse<T>();
+  public static <T> BizResult<T> success(T result) {
+   BizResult<T> response = new BizResult<T>();
    response.setData(result);
    return response;
   }
-  public static <T> RestResponse<T> success(T result,String msg) {
-   RestResponse<T> response = new RestResponse<T>();
+  public static <T> BizResult<T> success(T result, String msg) {
+   BizResult<T> response = new BizResult<T>();
    response.setData(result);
    response.setMsg(msg);
    return response;
+  }
+
+  public static BizResult successByMsg(String msg){
+      BizResult result = new BizResult();
+      result.setMsg(msg);
+      return result;
   }
 
   /**
@@ -81,11 +87,13 @@ public class RestResponse<T> {
    *
    * @return RestResponse Rest服务封装相应数据
    */
-  public static <T> RestResponse<T> success() {
-   return new RestResponse<T>();
+  public static <T> BizResult<T> success() {
+   return new BizResult<T>();
   }
 
-
+  /**
+   * 是否成功
+   */
   public Boolean isSuccessful() {
    return this.code == 0;
   }
