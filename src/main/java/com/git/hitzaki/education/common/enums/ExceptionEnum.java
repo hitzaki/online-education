@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.common.constant;
+package com.git.hitzaki.education.common.enums;
 
 import lombok.AllArgsConstructor;
 

@@ -5,6 +5,7 @@ import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class TagRankDispatcher {
     private Map<TagRankEnum,TagRankComputer> computerMap;
     @Autowired
     public TagRankDispatcher(List<TagRankComputer> computers){
+        computerMap = new HashMap<>();
         computers.forEach(computer-> computerMap.put(computer.getKey(),computer));
     }
 

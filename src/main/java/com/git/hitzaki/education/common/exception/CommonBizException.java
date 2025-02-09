@@ -8,6 +8,8 @@ public class CommonBizException extends RuntimeException {
 
     private String errMessage;
 
+    private Integer errCode;
+
     public CommonBizException() {
         super();
     }

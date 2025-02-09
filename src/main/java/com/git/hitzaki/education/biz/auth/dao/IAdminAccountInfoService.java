@@ -3,6 +3,7 @@ package com.git.hitzaki.education.biz.auth.dao;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
+import com.git.hitzaki.education.model.auth.param.LoginParam;
 
 /**
  * <p>
@@ -14,4 +15,5 @@ import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
  */
 public interface IAdminAccountInfoService extends IService<AdminAccountInfoEntity> {
 
+    AdminAccountInfoEntity selectByLoginParam(LoginParam loginParam);
 }

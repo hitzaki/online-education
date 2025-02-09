@@ -34,26 +34,6 @@ public class AuthApi {
         return BizResult.successByMsg("发送成功");
     }
 
-    /**
-     * 管理员账号密码登录
-     */
-    @RequestMapping("/adminLogin")
-    public BizResult<SaTokenInfo> adminLogin() {
-        // TODO 登录校验
-
-        Long adminId = 1001l;
-        // TODO 登录
-        Map<String, Object> extraData = new HashMap<>();
-//        StpUtil.login(adminId,
-//                new SaLoginModel()
-//                        .setDevice("app") // 设备标识（可选）
-//                        .setExtraData(extraData) // 写入扩展数据
-//        );
-//        StpUtil.login(saBaseLoginUser.getId(), new SaLoginModel().setDevice().setExtra("name", saBaseLoginUser.getName()));
-
-        return BizResult.success(StpUtil.getTokenInfo());
-    }
-
     // TODO 管理员拓展信息获取
 
 
