@@ -24,7 +24,7 @@ public class AdminAuthApi {
     @Autowired
     private AuthCommonService authCommonService;
 
-    @ApiOperation("管理员账号密码登录 返回token")
+    @ApiOperation("管理员账号密码登录")
     @PostMapping("/adminLogin")
     public BizResult<Map<String, Object>> adminLogin(@RequestBody LoginParam loginParam) {
         return BizResult.success(authCommonService.adminLogin(loginParam));
@@ -37,7 +37,7 @@ public class AdminAuthApi {
     }
 
     @ApiOperation("退出登录")
-    @RequestMapping("/adminLogout")
+    @PostMapping("/adminLogout")
     public BizResult<Void> adminLogout() {
         authCommonService.adminLogout();
         return BizResult.success();

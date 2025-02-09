@@ -1,7 +1,10 @@
 package com.git.hitzaki.education.bus.auth;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.git.hitzaki.education.common.enums.ExceptionEnum;
+import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.service.IAuthBizService;
+import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +42,35 @@ public class AuthCommonService {
      */
     public void adminLogout() {
         StpUtil.logout();
+    }
+
+    public void sendPhoneMsg(String phone) {
+        if (!FormatValidationUtil.isPhoneCode(phone)){
+            CommonBizException.throwError(ExceptionEnum.PHONE_FORMAT);
+        }
+        // TODO 同一个ip地址60s限流
+        // TODO 发送短信验证码
+    }
+
+    public Map<String, Object> phoneLogin(LoginParam loginParam) {
+        loginParam.checkPhoneLogin();
+        // TODO 校验验证码是否正确
+        if (!"666666".equals(loginParam.getVerifyCode())){
+            CommonBizException.throwError(ExceptionEnum.VERIFY_CODE_ERROR);
+        }
+        return authBizService.phoneLogin(loginParam);
+    }
+
+    public Map<String, Object> wxLogin(LoginParam loginParam) {
+        loginParam.checkWxLogin();
+        return authBizService.wxLogin(loginParam);
+    }
+
+    public void userLogout() {
+        StpUtil.logout();
+    }
+
+    public Map<String, Object> userExtendInfo() {
+        return authBizService.userExtendInfo();
     }
 }

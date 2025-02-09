@@ -16,7 +16,9 @@ public class CommonBizException extends RuntimeException {
     private Integer errCode;
 
     public CommonBizException() {
-        super();
+        super(ExceptionEnum.COMMON_EXCEPTION.getDescription());
+        this.errMessage = ExceptionEnum.COMMON_EXCEPTION.getDescription();
+        this.errCode = RequestCodeConstant.FAIL;
     }
 
     public CommonBizException(String message) {

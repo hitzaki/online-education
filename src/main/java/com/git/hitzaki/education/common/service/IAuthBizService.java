@@ -14,4 +14,10 @@ public interface IAuthBizService {
     Map<String, Object> adminLogin(LoginParam loginParam);
 
     Map<String, Object> adminExtendInfo();
+
+    Map<String, Object> phoneLogin(LoginParam loginParam);
+
+    Map<String, Object> wxLogin(LoginParam loginParam);
+
+    Map<String, Object> userExtendInfo();
 }

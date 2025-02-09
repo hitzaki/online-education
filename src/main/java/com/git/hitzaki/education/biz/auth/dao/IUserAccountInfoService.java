@@ -14,4 +14,7 @@ import com.git.hitzaki.education.biz.auth.entity.UserAccountInfoEntity;
  */
 public interface IUserAccountInfoService extends IService<UserAccountInfoEntity> {
 
+    UserAccountInfoEntity getByPhone(String phone);
+
+    UserAccountInfoEntity getByWxCode(String wxCode);
 }

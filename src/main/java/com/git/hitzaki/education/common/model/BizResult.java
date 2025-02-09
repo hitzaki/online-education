@@ -82,8 +82,8 @@ public class BizResult<T> {
    return response;
   }
 
-  public static BizResult successByMsg(String msg){
-      BizResult result = new BizResult();
+  public static BizResult<Void> successByMsg(String msg){
+      BizResult<Void> result = new BizResult<>();
       result.setMsg(msg);
       return result;
   }
