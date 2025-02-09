@@ -1,5 +1,6 @@
 package com.git.hitzaki.education.common.model;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Data;
 import lombok.ToString;
 
@@ -36,5 +37,9 @@ public class PageResult<T> {
   public PageResult(){
 
   }
+
+    public static <T> PageResult<T> convert(IPage<T> page) {
+        return new PageResult<>(page.getRecords(),page.getTotal(), page.getCurrent(), page.getSize());
+    }
 
  }
