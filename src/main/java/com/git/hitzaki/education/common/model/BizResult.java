@@ -1,5 +1,6 @@
 package com.git.hitzaki.education.common.model;
 
+import com.git.hitzaki.education.common.constant.RequestCodeConstant;
 import lombok.Data;
 import lombok.ToString;
 
@@ -28,7 +29,7 @@ public class BizResult<T> {
 
 
   public BizResult() {
-   this(20000, "操作成功");
+   this(RequestCodeConstant.SUCCESS, "操作成功");
   }
 
   public BizResult(int code, String msg) {
@@ -45,19 +46,24 @@ public class BizResult<T> {
    */
   public static <T> BizResult<T> fail(String msg) {
    BizResult<T> response = new BizResult<T>();
-   response.setCode(-1);
+   response.setCode(RequestCodeConstant.FAIL);
    response.setMsg(msg);
    return response;
   }
   public static <T> BizResult<T> fail(T result, String msg) {
    BizResult<T> response = new BizResult<T>();
-   response.setCode(-1);
+   response.setCode(RequestCodeConstant.FAIL);
    response.setData(result);
    response.setMsg(msg);
    return response;
   }
 
-
+    public static <T> BizResult<T> fail(Integer code, String msg) {
+        BizResult<T> response = new BizResult<T>();
+        response.setCode(code);
+        response.setMsg(msg);
+        return response;
+    }
 
   /**
    * 添加正常响应数据（包含响应内容）
@@ -89,13 +95,6 @@ public class BizResult<T> {
    */
   public static <T> BizResult<T> success() {
    return new BizResult<T>();
-  }
-
-  /**
-   * 是否成功
-   */
-  public Boolean isSuccessful() {
-   return this.code == 0;
   }
 
  }

@@ -1,5 +1,6 @@
 package com.git.hitzaki.education.common.exception;
 
+import com.git.hitzaki.education.common.model.BizResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -23,16 +24,11 @@ public class GlobalExceptionHandler {
   // 业务中台主动抛出的，可预知异常
   @ResponseBody//将信息返回为 json格式
   @ExceptionHandler(CommonBizException.class)
-  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)//状态码返回500
-  public RestErrorResponse doBizException(CommonBizException e){
-
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public BizResult<Void> doBizException(CommonBizException e){
    log.error("捕获异常：{}",e.getErrMessage());
-   e.printStackTrace();
 
-   String errMessage = e.getErrMessage();
-   //写异常处理的逻辑
-   //....
-   return new RestErrorResponse(errMessage);
+   return BizResult.fail(e.getErrCode(), e.getMessage());
   }
 
 
@@ -40,15 +36,9 @@ public class GlobalExceptionHandler {
   @ResponseBody//将信息返回为 json格式
   @ExceptionHandler(Exception.class)//此方法捕获Exception异常
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)//状态码返回500
-  public RestErrorResponse doException(Exception e){
-
-   log.error("捕获异常：{}",e.getMessage());
-   e.printStackTrace();
-   // spring security 的异常, 不必为了异常类进行导包, 所以使用message进行校验
-   if(e.getMessage().equals("不允许访问")){
-       return new RestErrorResponse("没有操作此功能的权限");
-   }
-   return new RestErrorResponse(CommonError.UNKOWN_ERROR.getErrMessage());
+  public BizResult<Void> doException(Exception e){
+   log.error("未知异常：{}",e.getMessage());
+   return BizResult.fail(e.getMessage());
   }
 
   @ResponseBody//将信息返回为 json格式

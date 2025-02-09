@@ -1,9 +1,12 @@
 package com.git.hitzaki.education.common.exception;
 
+import lombok.Getter;
+
 /**
  * 中台通用异常
  * @author hitzaki
  */
+@Getter
 public class CommonBizException extends RuntimeException {
 
     private String errMessage;
@@ -17,10 +20,7 @@ public class CommonBizException extends RuntimeException {
     public CommonBizException(String message) {
         super(message);
         this.errMessage = message;
-    }
-
-    public String getErrMessage(){
-        return errMessage;
+        this.errCode = 50000;
     }
 
     public static void cast(String errMessage){
