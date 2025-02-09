@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.common.model.dto;
+package com.git.hitzaki.education.model.auth.dto;
 
 import lombok.Data;
 

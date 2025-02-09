@@ -1,6 +1,6 @@
 package com.git.hitzaki.education.biz.tag.rankservice;
 
-import com.git.hitzaki.education.common.model.constant.TagRankEnum;
+import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
 
 import java.util.List;
 

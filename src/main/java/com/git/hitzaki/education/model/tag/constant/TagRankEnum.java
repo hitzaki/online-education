@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.common.model.constant;
+package com.git.hitzaki.education.model.tag.constant;
 
 
 

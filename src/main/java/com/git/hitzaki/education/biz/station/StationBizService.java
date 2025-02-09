@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.station.mapper.StationMapper;
 import com.git.hitzaki.education.common.model.PageResult;
-import com.git.hitzaki.education.common.model.condition.StationPageQueryCondition;
-import com.git.hitzaki.education.common.model.vo.StationQueryVo;
+import com.git.hitzaki.education.model.course.condition.StationPageQueryCondition;
+import com.git.hitzaki.education.model.course.vo.StationQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

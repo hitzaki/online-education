@@ -1,5 +1,6 @@
-package com.git.hitzaki.education.common.model.vo;
+package com.git.hitzaki.education.model.course.vo;
 
+import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import lombok.Data;
 
 import java.math.BigDecimal;

@@ -3,11 +3,10 @@ package com.git.hitzaki.education.biz.tag.rankservice.computer;
 import com.git.hitzaki.education.biz.course.CourseBizService;
 import com.git.hitzaki.education.biz.tag.rankservice.TagRankComputer;
 import com.git.hitzaki.education.common.model.PageResult;
-import com.git.hitzaki.education.common.model.condition.CoursePageQueryCondition;
-import com.git.hitzaki.education.common.model.constant.TagRankEnum;
-import com.git.hitzaki.education.common.model.param.CoursePageQueryParam;
-import com.git.hitzaki.education.common.model.vo.CourseQueryVo;
-import com.git.hitzaki.education.common.model.vo.TagQueryVo;
+import com.git.hitzaki.education.model.course.condition.CoursePageQueryCondition;
+import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
+import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
+import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

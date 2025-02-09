@@ -8,9 +8,8 @@ import com.git.hitzaki.education.biz.tag.mapper.CommonTagMapper;
 import com.git.hitzaki.education.biz.tag.mapper.TagMappingMapper;
 import com.git.hitzaki.education.biz.tag.rankservice.TagRankDispatcher;
 import com.git.hitzaki.education.common.exception.CommonBizException;
-import com.git.hitzaki.education.common.model.constant.TagRankEnum;
-import com.git.hitzaki.education.common.model.vo.TagQueryVo;
-import lombok.Data;
+import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
+import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service

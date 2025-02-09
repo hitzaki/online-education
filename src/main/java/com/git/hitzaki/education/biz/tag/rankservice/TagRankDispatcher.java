@@ -1,7 +1,7 @@
 package com.git.hitzaki.education.biz.tag.rankservice;
 
 import com.git.hitzaki.education.common.exception.CommonBizException;
-import com.git.hitzaki.education.common.model.constant.TagRankEnum;
+import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

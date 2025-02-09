@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.station.entity.StationEntity;
-import com.git.hitzaki.education.common.model.condition.StationPageQueryCondition;
-import com.git.hitzaki.education.common.model.vo.StationQueryVo;
+import com.git.hitzaki.education.model.course.condition.StationPageQueryCondition;
+import com.git.hitzaki.education.model.course.vo.StationQueryVo;
 import org.springframework.data.repository.query.Param;
 
 /**

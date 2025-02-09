@@ -1,27 +1,23 @@
 package com.git.hitzaki.education.bus;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.company.CompanyBizService;
 import com.git.hitzaki.education.biz.course.CourseBizService;
 import com.git.hitzaki.education.biz.station.StationBizService;
 import com.git.hitzaki.education.biz.tag.TagBizService;
 import com.git.hitzaki.education.common.model.PageResult;
-import com.git.hitzaki.education.common.model.condition.StationPageQueryCondition;
-import com.git.hitzaki.education.common.model.constant.TagRankEnum;
-import com.git.hitzaki.education.common.model.constant.TagTargetTypeEnum;
-import com.git.hitzaki.education.common.model.param.StationPageQueryParam;
-import com.git.hitzaki.education.common.model.vo.CompanyQueryVo;
-import com.git.hitzaki.education.common.model.vo.StationQueryVo;
-import com.git.hitzaki.education.common.model.vo.TagQueryVo;
+import com.git.hitzaki.education.model.course.condition.StationPageQueryCondition;
+import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
+import com.git.hitzaki.education.model.tag.constant.TagTargetTypeEnum;
+import com.git.hitzaki.education.model.course.param.StationPageQueryParam;
+import com.git.hitzaki.education.model.course.vo.CompanyQueryVo;
+import com.git.hitzaki.education.model.course.vo.StationQueryVo;
+import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;

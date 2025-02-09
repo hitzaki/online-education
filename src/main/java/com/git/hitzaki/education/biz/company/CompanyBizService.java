@@ -3,7 +3,7 @@ package com.git.hitzaki.education.biz.company;
 import com.git.hitzaki.education.biz.company.dao.ICompanyService;
 import com.git.hitzaki.education.biz.company.entity.CompanyEntity;
 import com.git.hitzaki.education.biz.company.mapper.CompanyMapper;
-import com.git.hitzaki.education.common.model.vo.CompanyQueryVo;
+import com.git.hitzaki.education.model.course.vo.CompanyQueryVo;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

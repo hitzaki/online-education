@@ -1,6 +1,5 @@
-package com.git.hitzaki.education.common.model.vo;
+package com.git.hitzaki.education.model.tag.vo;
 
-import com.git.hitzaki.education.biz.tag.entity.CommonTagEntity;
 import lombok.Data;
 
 @Data

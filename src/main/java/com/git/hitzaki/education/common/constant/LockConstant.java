@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.common.model.constant;
+package com.git.hitzaki.education.common.constant;
 
 /**
  * 统一锁常量
