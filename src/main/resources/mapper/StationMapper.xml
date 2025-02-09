@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.py.mymodule.submodule.mapper.StationMapper">
+<mapper namespace="com.git.hitzaki.education.biz.station.mapper.StationMapper">
 
+    <select id="stationPageQuery" resultType="com.git.hitzaki.education.common.model.vo.StationQueryVo">
+        select *
+        <if test="condition.priorityTagList !=null and priorityTagList.size()>0">
+            ,MIN(FIELD(tm.tag_id,
+            <foreach collection="condition.priorityTagList" item="tagId" separator=",">
+                #{tagId}
+            </foreach>
+            )) AS priority
+        </if>
+        from station s
+        left join tag_mapping tm on s.id = tm.target_id and tm.target_type = 1
+        where
+              1=1
+        <if test="condition.tagId !=null">
+            and tm.id = #{condition.tagId}
+        </if>
+        <if test="condition.useSearchText()">
+            and(
+                1=1
+            <if test="condition.stationName !=null and condition.stationName !=''">
+                or s.title LIKE CONCAT('%', #{condition.stationName}, '%')
+            </if>
+            <if test="condition.searchTextCompanyIdList !=null and condition.searchTextCompanyIdList.size()>0">
+                or s.company_id in
+                <foreach collection="condition.searchTextCompanyIdList" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+
+            )
+        </if>
+        <if test="condition.companyIdList !=null and condition.companyIdList.size()>0">
+            or s.company_id in
+            <foreach collection="condition.companyIdList" item="id" separator=",">
+                #{id}
+            </foreach>
+        </if>
+
+        GROUP BY
+        c.id
+        ORDER BY
+        <if test="condition.priorityTagList !=null and priorityTagList.size()>0">
+            priority ASC,
+        </if>
+        c.create_time DESC
+
+    </select>
 </mapper>

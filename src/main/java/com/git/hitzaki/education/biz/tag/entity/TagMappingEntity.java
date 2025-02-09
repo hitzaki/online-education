@@ -42,6 +42,11 @@ public class TagMappingEntity implements Serializable {
     private Long targetId;
 
     /**
+     * 目标类型
+     */
+    private Integer targetType;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;

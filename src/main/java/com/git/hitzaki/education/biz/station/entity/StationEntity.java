@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.station.entity;
 
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;

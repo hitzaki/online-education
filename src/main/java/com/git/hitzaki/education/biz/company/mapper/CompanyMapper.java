@@ -1,8 +1,8 @@
-package com.git.hitzaki.education.biz.course.mapper;
+package com.git.hitzaki.education.biz.company.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.git.hitzaki.education.biz.course.entity.CompanyEntity;
+import com.git.hitzaki.education.biz.company.entity.CompanyEntity;
 
 /**
  * <p>

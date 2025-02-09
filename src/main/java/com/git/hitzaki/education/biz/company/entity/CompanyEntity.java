@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.company.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author author

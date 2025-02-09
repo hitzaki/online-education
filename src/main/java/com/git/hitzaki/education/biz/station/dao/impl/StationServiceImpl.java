@@ -1,10 +1,10 @@
-package com.git.hitzaki.education.biz.course.dao.impl;
+package com.git.hitzaki.education.biz.station.dao.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.course.entity.StationEntity;
-import com.git.hitzaki.education.biz.course.mapper.StationMapper;
-import com.git.hitzaki.education.biz.course.dao.IStationService;
+import com.git.hitzaki.education.biz.station.entity.StationEntity;
+import com.git.hitzaki.education.biz.station.mapper.StationMapper;
+import com.git.hitzaki.education.biz.station.dao.IStationService;
 import org.springframework.stereotype.Service;
 
 /**
