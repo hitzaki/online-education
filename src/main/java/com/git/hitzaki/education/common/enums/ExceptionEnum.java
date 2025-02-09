@@ -16,7 +16,8 @@ public enum ExceptionEnum {
     /**
      * 认证授权相关 50100 - 50199
      */
-    ADMIN_LOGIN_ERROR(50100,"账号密码错误"),
+    AUTH_ERROR(50100,"认证信息异常"),
+    ADMIN_LOGIN_ERROR(50101,"账号密码错误"),
     ;
     private final Integer code;
     private final String description;

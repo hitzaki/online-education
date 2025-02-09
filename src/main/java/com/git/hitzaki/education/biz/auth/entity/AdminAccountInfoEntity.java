@@ -31,7 +31,7 @@ public class AdminAccountInfoEntity implements Serializable {
     /**
      * 类型0管理员1 业务员
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 手机

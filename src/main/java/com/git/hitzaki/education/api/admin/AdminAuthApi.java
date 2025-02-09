@@ -1,9 +1,7 @@
 package com.git.hitzaki.education.api.admin;
 
-import cn.dev33.satoken.stp.SaTokenInfo;
-import cn.dev33.satoken.stp.StpUtil;
+import com.git.hitzaki.education.bus.auth.AuthCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
-import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,25 +22,24 @@ import java.util.Map;
 public class AdminAuthApi {
 
     @Autowired
-    private IAuthBizService authBizService;
+    private AuthCommonService authCommonService;
 
-    /**
-     * 管理员账号密码登录
-     */
-    @ApiOperation("管理员登录 返回token")
+    @ApiOperation("管理员账号密码登录 返回token")
     @PostMapping("/adminLogin")
-    public BizResult<String> adminLogin(@RequestBody LoginParam loginParam) {
-        return BizResult.success(authBizService.adminLogin(loginParam));
+    public BizResult<Map<String, Object>> adminLogin(@RequestBody LoginParam loginParam) {
+        return BizResult.success(authCommonService.adminLogin(loginParam));
     }
 
-    // TODO 管理员拓展信息获取
+    @ApiOperation("管理员拓展信息获取")
+    @PostMapping("/adminExtendInfo")
+    public BizResult<Map<String, Object>> adminExtendInfo() {
+        return BizResult.success(authCommonService.adminExtendInfo());
+    }
 
-    /**
-     * 退出登录
-     */
+    @ApiOperation("退出登录")
     @RequestMapping("/adminLogout")
-    public BizResult<Void> logout() {
-        StpUtil.logout();
+    public BizResult<Void> adminLogout() {
+        authCommonService.adminLogout();
         return BizResult.success();
     }
 

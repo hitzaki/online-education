@@ -31,11 +31,11 @@ public class CommonBizException extends RuntimeException {
         this.errCode = errCode;
     }
 
-    public static void build(String errMessage){
+    public static void throwError(String errMessage){
         throw new CommonBizException(errMessage);
     }
 
-    public static void build(ExceptionEnum exceptionEnum){
+    public static void throwError(ExceptionEnum exceptionEnum){
         throw new CommonBizException(exceptionEnum.getCode(), exceptionEnum.getDescription());
     }
 }
