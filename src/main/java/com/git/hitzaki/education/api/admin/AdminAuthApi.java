@@ -42,7 +42,7 @@ public class AdminAuthApi {
      * 退出登录
      */
     @RequestMapping("/adminLogout")
-    public BizResult logout() {
+    public BizResult<Void> logout() {
         StpUtil.logout();
         return BizResult.success();
     }

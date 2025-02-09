@@ -33,7 +33,6 @@ public class AuthBizService implements IAuthBizService {
             throw new CommonBizException("");
         }
 
-        Long adminId = 1001l;
         // TODO 登录
         Map<String, Object> extraData = new HashMap<>();
 //        StpUtil.login(adminId,

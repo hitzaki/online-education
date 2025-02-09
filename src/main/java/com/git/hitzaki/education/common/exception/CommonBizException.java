@@ -1,5 +1,7 @@
 package com.git.hitzaki.education.common.exception;
 
+import com.git.hitzaki.education.common.constant.RequestCodeConstant;
+import com.git.hitzaki.education.common.enums.ExceptionEnum;
 import lombok.Getter;
 
 /**
@@ -20,13 +22,20 @@ public class CommonBizException extends RuntimeException {
     public CommonBizException(String message) {
         super(message);
         this.errMessage = message;
-        this.errCode = 50000;
+        this.errCode = RequestCodeConstant.FAIL;
     }
 
-    public static void cast(String errMessage){
+    public CommonBizException(Integer errCode, String message) {
+        super(message);
+        this.errMessage = message;
+        this.errCode = errCode;
+    }
+
+    public static void build(String errMessage){
         throw new CommonBizException(errMessage);
     }
-    public static void cast(CommonError commonError){
-        throw new CommonBizException(commonError.getErrMessage());
+
+    public static void build(ExceptionEnum exceptionEnum){
+        throw new CommonBizException(exceptionEnum.getCode(), exceptionEnum.getDescription());
     }
 }
