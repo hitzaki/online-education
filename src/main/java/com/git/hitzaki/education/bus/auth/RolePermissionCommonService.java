@@ -1,21 +1,12 @@
 package com.git.hitzaki.education.bus.auth;
 
-import cn.dev33.satoken.stp.StpUtil;
-import com.git.hitzaki.education.common.enums.ExceptionEnum;
-import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthBizService;
-import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
-import com.git.hitzaki.education.model.auth.param.LoginParam;
-import com.git.hitzaki.education.model.auth.param.PermissionOperateParam;
-import com.git.hitzaki.education.model.auth.param.RoleOperateParam;
-import com.git.hitzaki.education.model.auth.param.RolePermissionOperateParam;
+import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.PermissionVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * 认证授权
@@ -28,7 +19,7 @@ public class RolePermissionCommonService {
     private IAuthBizService authBizService;
 
 
-    public PageResult<PermissionVo> permissionPage() {
+    public PageResult<PermissionVo> permissionPage(PermissionQueryParam queryParam) {
         return null;
     }
 
@@ -40,7 +31,7 @@ public class RolePermissionCommonService {
 
     }
 
-    public PageResult<PermissionVo> rolePage() {
+    public PageResult<PermissionVo> rolePage(RoleQueryParam queryParam) {
         return null;
     }
 
@@ -52,7 +43,7 @@ public class RolePermissionCommonService {
 
     }
 
-    public PageResult<PermissionVo> rolePermissionPage() {
+    public PageResult<PermissionVo> rolePermissionPage(RolePermissionQueryParam queryParam) {
         return null;
     }
 
@@ -61,6 +52,30 @@ public class RolePermissionCommonService {
     }
 
     public void rolePermissionInsert(RolePermissionOperateParam operateParam) {
+
+    }
+
+    public PageResult<PermissionVo> userPage(UserQueryParam queryParam) {
+        return null;
+    }
+
+    public void userBan(UserOperateParam operateParam) {
+
+    }
+
+    public void userUnban(UserOperateParam operateParam) {
+
+    }
+
+    public PageResult<PermissionVo> adminPage(AdminQueryParam queryParam) {
+        return null;
+    }
+
+    public void adminInsert(AdminOperateParam operateParam) {
+
+    }
+
+    public void adminBan(AdminOperateParam operateParam) {
 
     }
 }

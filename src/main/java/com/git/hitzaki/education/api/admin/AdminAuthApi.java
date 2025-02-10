@@ -4,10 +4,7 @@ import com.git.hitzaki.education.bus.auth.AuthCommonService;
 import com.git.hitzaki.education.bus.auth.RolePermissionCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
 import com.git.hitzaki.education.common.model.PageResult;
-import com.git.hitzaki.education.model.auth.param.LoginParam;
-import com.git.hitzaki.education.model.auth.param.PermissionOperateParam;
-import com.git.hitzaki.education.model.auth.param.RoleOperateParam;
-import com.git.hitzaki.education.model.auth.param.RolePermissionOperateParam;
+import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.PermissionVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -57,8 +54,8 @@ public class AdminAuthApi {
      */
     @ApiOperation("权限-分页查询")
     @PostMapping("/permissionPage")
-    public PageResult<PermissionVo> permissionPage() {
-        return rolePermissionCommonService.permissionPage();
+    public PageResult<PermissionVo> permissionPage(PermissionQueryParam queryParam) {
+        return rolePermissionCommonService.permissionPage(queryParam);
     }
 
     @ApiOperation("权限-删除")
@@ -80,8 +77,8 @@ public class AdminAuthApi {
      */
     @ApiOperation("角色-分页查询")
     @PostMapping("/rolePage")
-    public PageResult<PermissionVo> rolePage() {
-        return rolePermissionCommonService.rolePage();
+    public PageResult<PermissionVo> rolePage(RoleQueryParam queryParam) {
+        return rolePermissionCommonService.rolePage(queryParam);
     }
 
     @ApiOperation("角色-删除")
@@ -103,8 +100,8 @@ public class AdminAuthApi {
      */
     @ApiOperation("权限-分页查询")
     @PostMapping("/rolePermissionPage")
-    public PageResult<PermissionVo> rolePermissionPage() {
-        return rolePermissionCommonService.rolePermissionPage();
+    public PageResult<PermissionVo> rolePermissionPage(RolePermissionQueryParam queryParam) {
+        return rolePermissionCommonService.rolePermissionPage(queryParam);
     }
 
     @ApiOperation("权限-删除")
@@ -121,6 +118,56 @@ public class AdminAuthApi {
         return BizResult.success();
     }
 
+    /**
+     * 用户管理
+     */
+    @ApiOperation("用户-分页查询")
+    @PostMapping("/userPage")
+    public PageResult<PermissionVo> userPage(UserQueryParam queryParam) {
+        return rolePermissionCommonService.userPage(queryParam);
+    }
 
+    @ApiOperation("权限-封禁")
+    @PostMapping("/userBan")
+    public BizResult<Void> userBan(UserOperateParam operateParam) {
+        rolePermissionCommonService.userBan(operateParam);
+        return BizResult.success();
+    }
+
+    @ApiOperation("权限-解除封禁")
+    @PostMapping("/userUnban")
+    public BizResult<Void> userUnban(UserOperateParam operateParam) {
+        rolePermissionCommonService.userUnban(operateParam);
+        return BizResult.success();
+    }
+
+    /**
+     * 管理员管理
+     */
+    @ApiOperation("管理员-分页查询")
+    @PostMapping("/adminPage")
+    public PageResult<PermissionVo> adminPage(AdminQueryParam queryParam) {
+        return rolePermissionCommonService.adminPage(queryParam);
+    }
+
+    @ApiOperation("管理员-新增")
+    @PostMapping("/adminInsert")
+    public BizResult<Void> adminInsert(AdminOperateParam operateParam) {
+        rolePermissionCommonService.adminInsert(operateParam);
+        return BizResult.success();
+    }
+
+    @ApiOperation("管理员-停用")
+    @PostMapping("/adminBan")
+    public BizResult<Void> adminBan(AdminOperateParam operateParam) {
+        rolePermissionCommonService.adminBan(operateParam);
+        return BizResult.success();
+    }
+
+    // TODO 操作权限注解
+    // TODO 管理员改变头像
+    // TODO 管理员改变资料
+    // TODO 业务员分页查看自己对应的用户列表
+    // TODO 业务员生成分享链接
 
 }

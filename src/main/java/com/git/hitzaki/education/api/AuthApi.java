@@ -58,6 +58,9 @@ public class AuthApi {
         return BizResult.success(authCommonService.userExtendInfo());
     }
 
+    // TODO 用户改变头像
+    // TODO 用户改变资料
+
     @ApiOperation("用户退出登录")
     @PostMapping("/userLogout")
     public BizResult<Void> userLogout() {
