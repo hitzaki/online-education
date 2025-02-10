@@ -4,6 +4,8 @@ package com.git.hitzaki.education.biz.auth.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.git.hitzaki.education.biz.auth.entity.PermissionEntity;
 
+import java.util.List;
+
 /**
  * <p>
  * 权限 Mapper 接口
@@ -14,4 +16,5 @@ import com.git.hitzaki.education.biz.auth.entity.PermissionEntity;
  */
 public interface PermissionMapper extends BaseMapper<PermissionEntity> {
 
+    List<String> selectPermissionByUserId(Long userId);
 }

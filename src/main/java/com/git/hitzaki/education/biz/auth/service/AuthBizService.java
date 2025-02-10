@@ -3,11 +3,14 @@ package com.git.hitzaki.education.biz.auth.service;
 import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.git.hitzaki.education.biz.auth.dao.IAdminAccountInfoService;
+import com.git.hitzaki.education.biz.auth.dao.IRoleService;
 import com.git.hitzaki.education.biz.auth.dao.IUserAccountInfoService;
 import com.git.hitzaki.education.biz.auth.dao.IUserInfoService;
 import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
 import com.git.hitzaki.education.biz.auth.entity.UserAccountInfoEntity;
 import com.git.hitzaki.education.biz.auth.entity.UserInfoEntity;
+import com.git.hitzaki.education.biz.auth.mapper.PermissionMapper;
+import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
 import com.git.hitzaki.education.common.enums.ExceptionEnum;
 import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
@@ -18,10 +21,7 @@ import com.git.hitzaki.education.model.auth.param.LoginParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 业务操作接口实现
@@ -42,6 +42,12 @@ public class AuthBizService implements IAuthBizService {
     @Autowired
     private SnowflakeIdUtil snowflakeIdUtil;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private PermissionMapper permissionMapper;
+
 
     @Override
     public Map<String, Object> adminLogin(LoginParam loginParam) {
@@ -51,7 +57,7 @@ public class AuthBizService implements IAuthBizService {
             CommonBizException.throwError(ExceptionEnum.ADMIN_LOGIN_ERROR);
         }
         String loginType = LoginTypeEnum.getLoginType(adminEntity.getType());
-        StpUtil.login(AuthInfoUtils.buildLoginInfo(loginType, adminEntity.getId()));
+        StpUtil.login(AuthInfoUtils.buildLoginInfo(loginType, adminEntity.getId()), loginType);
 
         Map<String, Object> result = new HashMap<>();
         result.put("token", StpUtil.getTokenValue());
@@ -139,5 +145,15 @@ public class AuthBizService implements IAuthBizService {
         result.put("avatar",userEntity.getAvatar());
         result.put("name", userEntity.getNickName());
         return result;
+    }
+
+    @Override
+    public List<String> getPermissionList(Long userId) {
+        return permissionMapper.selectPermissionByUserId(userId);
+    }
+
+    @Override
+    public List<String> getRoleList(Long userId) {
+        return roleMapper.selectRoleByUserId(userId);
     }
 }

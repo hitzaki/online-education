@@ -1,6 +1,7 @@
 package com.git.hitzaki.education.common.model;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.git.hitzaki.education.common.constant.RequestCodeConstant;
 import lombok.Data;
 import lombok.ToString;
 
@@ -19,7 +20,7 @@ public class PageResult<T> {
   //总记录数
   private long counts;
 
-  private int code = 20000;
+  private int code = RequestCodeConstant.SUCCESS;
 
   //当前页码
   private long page;

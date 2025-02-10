@@ -2,6 +2,7 @@ package com.git.hitzaki.education.common.service;
 
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,4 +21,8 @@ public interface IAuthBizService {
     Map<String, Object> wxLogin(LoginParam loginParam);
 
     Map<String, Object> userExtendInfo();
+
+    List<String> getPermissionList(Long userId);
+
+    List<String> getRoleList(Long userId);
 }

@@ -1,7 +1,7 @@
 package com.git.hitzaki.education.api;
 
 
-import com.git.hitzaki.education.bus.CourseCommonService;
+import com.git.hitzaki.education.bus.course.CourseCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.model.course.param.CoursePageQueryParam;

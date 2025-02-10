@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.bus;
+package com.git.hitzaki.education.bus.course;
 
 import com.git.hitzaki.education.biz.company.CompanyBizService;
 import com.git.hitzaki.education.biz.course.CourseBizService;
