@@ -24,7 +24,7 @@ import java.util.Map;
  * @author hitzaki
  */
 @Api("管理员-认证授权接口")
-@RestController("/admin/auth")
+@RestController("/adminAuth")
 public class AdminAuthApi {
 
     @Autowired
@@ -85,7 +85,7 @@ public class AdminAuthApi {
     }
 
     @ApiOperation("角色-删除")
-    @PostMapping("/permissionDelete")
+    @PostMapping("/roleDelete")
     public BizResult<Void> roleDelete(RoleOperateParam operateParam) {
         rolePermissionCommonService.roleDelete(operateParam);
         return BizResult.success();
