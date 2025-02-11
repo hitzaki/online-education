@@ -1,18 +1,12 @@
 package com.git.hitzaki.education.bus.auth;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.git.hitzaki.education.common.enums.ExceptionEnum;
-import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
-import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
 import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 /**
  * 认证授权
@@ -30,11 +24,13 @@ public class AuthManageCommonService {
     }
 
     public void permissionDelete(PermissionOperateParam operateParam) {
-        // TODO
+        operateParam.checkDelete();
+        authManageBizService.permissionDelete(operateParam);
     }
 
     public void permissionInsert(PermissionOperateParam operateParam) {
-// TODO
+        operateParam.checkInsert();
+        authManageBizService.permissionInsert(operateParam);
     }
 
     public PageResult<RoleVo> rolePage(RoleQueryParam queryParam) {
@@ -42,41 +38,43 @@ public class AuthManageCommonService {
     }
 
     public void roleDelete(RoleOperateParam operateParam) {
-// TODO
+        operateParam.checkDelete();
+        authManageBizService.roleDelete(operateParam);
     }
 
     public void roleInsert(RoleOperateParam operateParam) {
-// TODO
+        operateParam.checkInsert();
+        authManageBizService.roleInsert(operateParam);
     }
 
     public PageResult<PermissionVo> rolePermissionPage(PermissionQueryParam queryParam) {
-        if (! FormatValidationUtil.isId(queryParam.getRoleId())){
-            CommonBizException.throwError(ExceptionEnum.PARAM_LACK);
-        }
+        queryParam.checkRolePermissionPage();
         return authManageBizService.rolePermissionPage(queryParam);
     }
 
     public void rolePermissionDelete(RolePermissionOperateParam operateParam) {
-// TODO
+        operateParam.checkDelete();
+        authManageBizService.rolePermissionDelete(operateParam);
     }
 
     public void rolePermissionInsert(RolePermissionOperateParam operateParam) {
-// TODO
+        operateParam.checkInsert();
+        authManageBizService.rolePermissionInsert(operateParam);
     }
 
     public PageResult<RoleVo> userRolePage(RoleQueryParam queryParam) {
-        if (! FormatValidationUtil.isId(queryParam.getUserId())){
-            CommonBizException.throwError(ExceptionEnum.PARAM_LACK);
-        }
+        queryParam.checkUserRolePage();
         return authManageBizService.userRolePage(queryParam);
     }
 
     public void userRoleInsert(UserRoleOperateParam operateParam) {
-// TODO
+        operateParam.checkInsert();
+        authManageBizService.userRoleInsert(operateParam);
     }
 
     public void userRoleDelete(UserRoleOperateParam operateParam) {
-// TODO
+        operateParam.checkDelete();
+        authManageBizService.userRoleDelete(operateParam);
     }
 
     public PageResult<UserVo> userPage(UserQueryParam queryParam) {
@@ -84,24 +82,27 @@ public class AuthManageCommonService {
     }
 
     public void userBan(UserOperateParam operateParam) {
-// TODO
+        operateParam.checkBan();
+        authManageBizService.userBan(operateParam);
     }
 
     public void userUnban(UserOperateParam operateParam) {
-// TODO
+        operateParam.checkBan();
+        authManageBizService.userUnban(operateParam);
     }
 
     public PageResult<AdminVo> adminPage(AdminQueryParam queryParam) {
         return authManageBizService.adminPage(queryParam);
     }
 
-    public void adminInsert(AdminOperateParam operateParam) {
-// TODO
-    }
-
     public void adminBan(AdminOperateParam operateParam) {
-// TODO
+        operateParam.checkBan();
+        authManageBizService.adminBan(operateParam);
     }
 
+    public void adminInsert(AdminOperateParam operateParam) {
+        operateParam.checkInsert();
+        authManageBizService.adminInsert(operateParam);
+    }
 
 }

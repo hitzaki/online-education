@@ -49,6 +49,7 @@ public class AuthApi {
     }
 
     // TODO 微信登陆
+    // todo 登录校验是否封禁
     @ApiOperation("用户微信登录")
     @PostMapping("/wxLogin")
     public BizResult<Map<String, Object>> wxLogin(@RequestBody LoginParam loginParam) {

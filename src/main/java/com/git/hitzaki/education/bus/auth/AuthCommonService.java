@@ -76,7 +76,7 @@ public class AuthCommonService {
     }
 
     public void updateUserInfo(UserOperateParam operateParam) {
-        operateParam.updateInfoCheck();
+        operateParam.checkUpdateInfo();
         authBizService.updateUserInfo(operateParam);
     }
 }

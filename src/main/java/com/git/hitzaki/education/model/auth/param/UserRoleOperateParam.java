@@ -3,6 +3,7 @@ package com.git.hitzaki.education.model.auth.param;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.git.hitzaki.education.common.enums.ExceptionEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
+import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
 import lombok.Data;
 
 /**
@@ -11,12 +12,20 @@ import lombok.Data;
  */
 @Data
 public class UserRoleOperateParam {
-    private String avatar;
+    private Long userRoleId;
 
-    private String nickName;
+    private Long userId;
 
-    public void updateInfoCheck(){
-        if (StringUtils.isBlank(avatar) && StringUtils.isBlank(nickName)){
+    private Long roleId;
+
+    public void checkInsert(){
+        if (!FormatValidationUtil.isId(userId) || !FormatValidationUtil.isId(roleId)){
+            CommonBizException.throwError(ExceptionEnum.PARAM_LACK);
+        }
+    }
+
+    public void checkDelete(){
+        if (! FormatValidationUtil.isId(userRoleId)){
             CommonBizException.throwError(ExceptionEnum.PARAM_LACK);
         }
     }

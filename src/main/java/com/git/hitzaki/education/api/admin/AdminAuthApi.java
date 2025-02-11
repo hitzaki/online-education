@@ -31,6 +31,7 @@ public class AdminAuthApi {
     @Autowired
     private AuthManageCommonService authManageCommonService;
 
+    // 停用的管理员不能登录
     @ApiOperation("管理员账号密码登录")
     @PostMapping("/adminLogin")
     public BizResult<Map<String, Object>> adminLogin(@RequestBody LoginParam loginParam) {

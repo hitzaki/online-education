@@ -1,15 +1,15 @@
 package com.git.hitzaki.education.biz.auth.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.git.hitzaki.education.biz.auth.dao.IAdminAccountInfoService;
-import com.git.hitzaki.education.biz.auth.dao.IUserAccountInfoService;
-import com.git.hitzaki.education.biz.auth.dao.IUserInfoService;
+import com.git.hitzaki.education.biz.auth.dao.*;
+import com.git.hitzaki.education.biz.auth.entity.*;
 import com.git.hitzaki.education.biz.auth.mapper.AdminAccountInfoMapper;
 import com.git.hitzaki.education.biz.auth.mapper.PermissionMapper;
 import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
 import com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
+import com.git.hitzaki.education.common.utils.IdGenerator;
 import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.AdminVo;
 import com.git.hitzaki.education.model.auth.vo.PermissionVo;
@@ -32,7 +32,16 @@ public class AuthManageBizService implements IAuthManageBizService {
     private IUserAccountInfoService userAccountInfoService;
 
     @Autowired
-    private IUserInfoService userInfoService;
+    private IPermissionService permissionService;
+
+    @Autowired
+    private IRoleService roleService;
+
+    @Autowired
+    private IRolePermissionService rolePermissionService;
+
+    @Autowired
+    private IUserRoleService userRoleService;
 
     @Autowired
     private RoleMapper roleMapper;
@@ -85,6 +94,95 @@ public class AuthManageBizService implements IAuthManageBizService {
 
     @Override
     public void permissionDelete(PermissionOperateParam operateParam) {
-
+        permissionService.removeById(operateParam.getPermissionId());
     }
+
+    @Override
+    public void permissionInsert(PermissionOperateParam operateParam) {
+        PermissionEntity permissionEntity = new PermissionEntity();
+        permissionEntity.setId(IdGenerator.generateId());
+        permissionEntity.setCode(operateParam.getCode());
+        permissionEntity.setName(operateParam.getName());
+        permissionService.save(permissionEntity);
+    }
+
+    @Override
+    public void roleDelete(RoleOperateParam operateParam) {
+        roleService.removeById(operateParam.getRoleId());
+    }
+
+    @Override
+    public void roleInsert(RoleOperateParam operateParam) {
+        RoleEntity roleEntity = new RoleEntity();
+        roleEntity.setId(IdGenerator.generateId());
+        roleEntity.setRoleCode(operateParam.getCode());
+        roleEntity.setRoleName(operateParam.getName());
+        roleService.save(roleEntity);
+    }
+
+    @Override
+    public void rolePermissionDelete(RolePermissionOperateParam operateParam) {
+        rolePermissionService.removeById(operateParam.getRolePermissionId());
+    }
+
+    @Override
+    public void rolePermissionInsert(RolePermissionOperateParam operateParam) {
+        RolePermissionEntity rolePermissionEntity = new RolePermissionEntity();
+        rolePermissionEntity.setId(IdGenerator.generateId());
+        rolePermissionEntity.setPermissionId(operateParam.getPermissionId());
+        rolePermissionEntity.setRoleId(operateParam.getRoleId());
+        rolePermissionService.save(rolePermissionEntity);
+    }
+
+    @Override
+    public void userRoleDelete(UserRoleOperateParam operateParam) {
+        userRoleService.removeById(operateParam.getUserRoleId());
+    }
+
+    @Override
+    public void userRoleInsert(UserRoleOperateParam operateParam) {
+        UserRoleEntity userRoleEntity = new UserRoleEntity();
+        userRoleEntity.setId(IdGenerator.generateId());
+        userRoleEntity.setUserId(operateParam.getUserId());
+        userRoleEntity.setRoleId(operateParam.getRoleId());
+        userRoleService.save(userRoleEntity);
+    }
+
+    @Override
+    public void userBan(UserOperateParam operateParam) {
+        UserAccountInfoEntity user = new UserAccountInfoEntity();
+        user.setId(operateParam.getUserId());
+        // TODO 枚举抽取
+        user.setStatus(1);
+        userAccountInfoService.updateById(user);
+    }
+
+    @Override
+    public void userUnban(UserOperateParam operateParam) {
+        UserAccountInfoEntity user = new UserAccountInfoEntity();
+        user.setId(operateParam.getUserId());
+        user.setStatus(0);
+        userAccountInfoService.updateById(user);
+    }
+
+    @Override
+    public void adminBan(AdminOperateParam operateParam) {
+        AdminAccountInfoEntity admin = new AdminAccountInfoEntity();
+        admin.setId(operateParam.getAdminId());
+        admin.setStatus(1);
+        adminAccountInfoService.updateById(admin);
+    }
+
+    @Override
+    public void adminInsert(AdminOperateParam operateParam) {
+        AdminAccountInfoEntity admin = new AdminAccountInfoEntity();
+        admin.setId(IdGenerator.generateId());
+        admin.setAccount(operateParam.getAccount());
+        admin.setPassword(operateParam.getPassword());
+        admin.setAvatar(operateParam.getAvatar());
+        admin.setNickName(operateParam.getNickName());
+        admin.setType(operateParam.getType());
+        adminAccountInfoService.save(admin);
+    }
+
 }

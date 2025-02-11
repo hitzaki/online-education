@@ -28,4 +28,27 @@ public interface IAuthManageBizService {
     PageResult<AdminVo> adminPage(AdminQueryParam queryParam);
 
     void permissionDelete(PermissionOperateParam operateParam);
+
+    void permissionInsert(PermissionOperateParam operateParam);
+
+    void roleDelete(RoleOperateParam operateParam);
+
+    void roleInsert(RoleOperateParam operateParam);
+
+    void rolePermissionDelete(RolePermissionOperateParam operateParam);
+
+    void rolePermissionInsert(RolePermissionOperateParam operateParam);
+
+    void userRoleInsert(UserRoleOperateParam operateParam);
+
+    void userRoleDelete(UserRoleOperateParam operateParam);
+
+    void userBan(UserOperateParam operateParam);
+
+    void userUnban(UserOperateParam operateParam);
+
+    void adminBan(AdminOperateParam operateParam);
+
+    void adminInsert(AdminOperateParam operateParam);
+
 }
