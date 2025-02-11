@@ -2,7 +2,12 @@ package com.git.hitzaki.education.biz.auth.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.auth.entity.PermissionEntity;
+import com.git.hitzaki.education.common.model.PageResult;
+import com.git.hitzaki.education.model.auth.param.PermissionQueryParam;
+import com.git.hitzaki.education.model.auth.vo.PermissionVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,4 +22,10 @@ import java.util.List;
 public interface PermissionMapper extends BaseMapper<PermissionEntity> {
 
     List<String> selectPermissionByUserId(Long userId);
+
+    PageResult<PermissionVo> permissionPage(@Param("page") Page<PermissionVo> page,
+                                            @Param("param") PermissionQueryParam queryParam);
+
+    PageResult<PermissionVo> rolePermissionPage(@Param("page") Page<PermissionVo> page,
+                                                @Param("param") PermissionQueryParam queryParam);
 }

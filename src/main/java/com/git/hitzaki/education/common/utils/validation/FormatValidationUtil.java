@@ -1,5 +1,6 @@
 package com.git.hitzaki.education.common.utils.validation;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,10 @@ public class FormatValidationUtil {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(phone);
         return m.matches();
+    }
+
+    public static Boolean isId(Long id){
+        return Objects.nonNull(id) && id > 0;
     }
 
 }

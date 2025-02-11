@@ -1,6 +1,7 @@
 package com.git.hitzaki.education.common.service;
 
 import com.git.hitzaki.education.model.auth.param.LoginParam;
+import com.git.hitzaki.education.model.auth.param.UserOperateParam;
 
 import java.util.List;
 import java.util.Map;
@@ -25,4 +26,6 @@ public interface IAuthBizService {
     List<String> getPermissionList(Long userId);
 
     List<String> getRoleList(Long userId);
+
+    void updateUserInfo(UserOperateParam operateParam);
 }

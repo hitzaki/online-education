@@ -8,7 +8,5 @@ import lombok.Data;
  * @author hitzaki
  */
 @Data
-public class UserQueryParam extends PageParams {
-    private String phone;
-    private String nickName;
+public class UserRoleQueryParam extends PageParams {
 }

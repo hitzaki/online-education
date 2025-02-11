@@ -11,12 +11,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 角色
- * </p>
- *
- * @author author
- * @since 2025-01-26
+ * 角色Vo
+ * @author hitzaki
  */
 @Data
 public class RoleVo implements Serializable {

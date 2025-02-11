@@ -8,12 +8,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 权限
- * </p>
- *
- * @author author
- * @since 2025-01-26
+ * 权限Vo
+ * @author hitzaki
  */
 @Data
 public class PermissionVo implements Serializable {
@@ -49,8 +45,6 @@ public class PermissionVo implements Serializable {
      * 状态(0:禁止,1:正常)
      */
     private Integer status;
-
-    private Integer deleteFlag;
 
     private LocalDateTime updateTime;
 

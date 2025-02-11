@@ -1,5 +1,6 @@
 package com.git.hitzaki.education.model.auth.param;
 
+import com.git.hitzaki.education.common.model.PageParams;
 import lombok.Data;
 
 /**
@@ -7,5 +8,11 @@ import lombok.Data;
  * @author hitzaki
  */
 @Data
-public class PermissionQueryParam {
+public class PermissionQueryParam extends PageParams {
+
+    private String name;
+
+    private String code;
+
+    private Long roleId;
 }

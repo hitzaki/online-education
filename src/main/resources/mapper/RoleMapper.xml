@@ -12,4 +12,36 @@
           ur.user_id = #{userId}
           AND tr.delete_flag = 0
     </select>
+
+    <select id="rolePage" resultType="com.git.hitzaki.education.model.auth.vo.RoleVo">
+        SELECT
+        ro.*
+        FROM role ro
+        WHERE
+        ro.delete_flag = 0
+        <if test="param.code != null and param.code != ''">
+            AND ro.role_code = #{param.code}
+        </if>
+        <if test="param.name != null and param.name != ''">
+            AND ro.role_name = #{param.name}
+        </if>
+    </select>
+
+    <select id="userRolePage" resultType="com.git.hitzaki.education.model.auth.vo.RoleVo">
+        SELECT
+        ro.*
+        FROM user_role ur
+        LEFT JOIN role ro
+        ON ro.id = ur.role_id
+        WHERE
+        ur.user_id = #{param.userId}
+        AND ur.delete_flag = 0
+        AND ro.delete_flag = 0
+        <if test="param.code != null and param.code != ''">
+            AND ro.role_code = #{param.code}
+        </if>
+        <if test="param.name != null and param.name != ''">
+            AND ro.role_name = #{param.name}
+        </if>
+    </select>
 </mapper>

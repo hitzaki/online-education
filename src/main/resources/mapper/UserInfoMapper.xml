@@ -2,4 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper">
 
+    <select id="userPage" resultType="com.git.hitzaki.education.model.auth.vo.UserVo">
+        SELECT
+        uai.*
+        , ui.avatar, ui.balance, ui.nick_name, ui.points
+        FROM user_account_info uai
+        LEFT JOIN user_info ui
+        ON ui.user_id = uai.id
+        WHERE
+        uai.delete_flag = 0
+        <if test="param.phone != null and param.phone != ''">
+            AND uai.phone = #{param.phone}
+        </if>
+        <if test="param.nickName != null and param.nickName != ''">
+            AND ui.nick_name = #{param.nickName}
+        </if>
+    </select>
 </mapper>

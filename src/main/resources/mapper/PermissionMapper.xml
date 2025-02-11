@@ -17,4 +17,36 @@
         AND tr.delete_flag = 0
         AND pe.delete_flag = 0
     </select>
+
+    <select id="permissionPage" resultType="com.git.hitzaki.education.model.auth.vo.PermissionVo">
+        SELECT
+          pe.*
+        FROM permission pe
+        WHERE
+        pe.delete_flag = 0
+        <if test="param.code != null and param.code != ''">
+            AND pe.code = #{param.code}
+        </if>
+        <if test="param.name != null and param.name != ''">
+            AND pe.name = #{param.name}
+        </if>
+    </select>
+
+    <select id="rolePermissionPage" resultType="com.git.hitzaki.education.model.auth.vo.PermissionVo">
+        SELECT
+        pe.*
+        FROM role_permission rp
+        LEFT JOIN permission pe
+        ON rp.permission_id = pe.id
+        WHERE
+        rp.role_id = #{param.roleId}
+        AND rp.delete_flag = 0
+        AND pe.delete_flag = 0
+        <if test="param.code != null and param.code != ''">
+            AND pe.code = #{param.code}
+        </if>
+        <if test="param.name != null and param.name != ''">
+            AND pe.name = #{param.name}
+        </if>
+    </select>
 </mapper>

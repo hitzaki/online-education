@@ -10,7 +10,7 @@ import lombok.Data;
  * @author hitzaki
  */
 @Data
-public class UserOperateParam {
+public class UserRoleOperateParam {
     private String avatar;
 
     private String nickName;

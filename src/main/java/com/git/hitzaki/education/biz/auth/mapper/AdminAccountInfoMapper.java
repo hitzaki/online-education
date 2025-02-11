@@ -2,7 +2,12 @@ package com.git.hitzaki.education.biz.auth.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
+import com.git.hitzaki.education.common.model.PageResult;
+import com.git.hitzaki.education.model.auth.param.AdminQueryParam;
+import com.git.hitzaki.education.model.auth.vo.AdminVo;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,4 +19,6 @@ import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
  */
 public interface AdminAccountInfoMapper extends BaseMapper<AdminAccountInfoEntity> {
 
+    PageResult<AdminVo> adminPage(@Param("page") Page<AdminVo> page,
+                                  @Param("param") AdminQueryParam queryParam);
 }

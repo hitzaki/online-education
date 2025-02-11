@@ -6,6 +6,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.git.hitzaki.education.bus.auth.AuthCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
+import com.git.hitzaki.education.model.auth.param.UserOperateParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ import java.util.Map;
  * 授权登录 权限控制
  * @author hitzaki
  */
-@RestController("/auth")
+@RestController
+@RequestMapping("/auth")
 public class AuthApi {
 
     @Autowired
@@ -39,6 +41,7 @@ public class AuthApi {
         return BizResult.successByMsg("发送成功");
     }
 
+    // TODO 登录还要传递业务员的唯一码
     @ApiOperation("用户手机号登录")
     @PostMapping("/phoneLogin")
     public BizResult<Map<String, Object>> phoneLogin(@RequestBody LoginParam loginParam) {
@@ -58,8 +61,14 @@ public class AuthApi {
         return BizResult.success(authCommonService.userExtendInfo());
     }
 
+    @ApiOperation("用户修改资料")
+    @PostMapping("/updateUserInfo")
+    public BizResult<Void> updateUserInfo(@RequestBody UserOperateParam operateParam) {
+        authCommonService.updateUserInfo(operateParam);
+        return BizResult.success();
+    }
+
     // TODO 用户改变头像
-    // TODO 用户改变资料
 
     @ApiOperation("用户退出登录")
     @PostMapping("/userLogout")

@@ -41,6 +41,8 @@ public class UserRoleEntity implements Serializable {
      */
     private Long roleId;
 
+    private Integer deleteFlag;
+
     private LocalDateTime updateTime;
 
     private LocalDateTime createTime;

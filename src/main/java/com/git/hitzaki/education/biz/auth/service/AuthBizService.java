@@ -18,9 +18,12 @@ import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.AuthInfoUtils;
 import com.git.hitzaki.education.common.utils.SnowflakeIdUtil;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
+import com.git.hitzaki.education.model.auth.param.UserOperateParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -155,5 +158,19 @@ public class AuthBizService implements IAuthBizService {
     @Override
     public List<String> getRoleList(Long userId) {
         return roleMapper.selectRoleByUserId(userId);
+    }
+
+    @Override
+    public void updateUserInfo(UserOperateParam operateParam) {
+        UserInfoEntity userInfoEntity = new UserInfoEntity();
+        userInfoEntity.setId(AuthInfoUtils.getLoginId());
+        if (StringUtils.isNotBlank(operateParam.getAvatar())){
+            userInfoEntity.setAvatar(operateParam.getAvatar());
+        }
+        if (StringUtils.isNotBlank(operateParam.getNickName())){
+            userInfoEntity.setNickName(operateParam.getNickName());
+        }
+        userInfoEntity.setUpdateTime(LocalDateTime.now());
+        userInfoService.updateById(userInfoEntity);
     }
 }

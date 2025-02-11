@@ -12,6 +12,7 @@ import lombok.Getter;
 public enum ExceptionEnum {
 
     COMMON_EXCEPTION(50000,"系统未知异常"),
+    PARAM_LACK(50001,"缺少必传参数"),
 
     /**
      * 认证授权相关 50100 - 50199

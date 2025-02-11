@@ -6,6 +6,7 @@ import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
+import com.git.hitzaki.education.model.auth.param.UserOperateParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,5 +73,10 @@ public class AuthCommonService {
 
     public Map<String, Object> userExtendInfo() {
         return authBizService.userExtendInfo();
+    }
+
+    public void updateUserInfo(UserOperateParam operateParam) {
+        operateParam.updateInfoCheck();
+        authBizService.updateUserInfo(operateParam);
     }
 }
