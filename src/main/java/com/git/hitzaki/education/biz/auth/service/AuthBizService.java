@@ -3,7 +3,6 @@ package com.git.hitzaki.education.biz.auth.service;
 import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.git.hitzaki.education.biz.auth.dao.IAdminAccountInfoService;
-import com.git.hitzaki.education.biz.auth.dao.IRoleService;
 import com.git.hitzaki.education.biz.auth.dao.IUserAccountInfoService;
 import com.git.hitzaki.education.biz.auth.dao.IUserInfoService;
 import com.git.hitzaki.education.biz.auth.entity.AdminAccountInfoEntity;
@@ -16,10 +15,9 @@ import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.AuthInfoUtils;
-import com.git.hitzaki.education.common.utils.SnowflakeIdUtil;
+import com.git.hitzaki.education.common.utils.IdGenerator;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 import com.git.hitzaki.education.model.auth.param.UserOperateParam;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,9 +39,6 @@ public class AuthBizService implements IAuthBizService {
 
     @Autowired
     private IUserInfoService userInfoService;
-
-    @Autowired
-    private SnowflakeIdUtil snowflakeIdUtil;
 
     @Autowired
     private RoleMapper roleMapper;
@@ -95,7 +90,7 @@ public class AuthBizService implements IAuthBizService {
         if (Objects.isNull(user)){
             // 首次登录 自动注册
             user = new UserAccountInfoEntity();
-            user.setId(snowflakeIdUtil.nextId());
+            user.setId(IdGenerator.generateId());
             user.setPhone(loginParam.getPhone());
             // 账号密码目前没有登录方式, 暂时等于手机号
             user.setAccount(loginParam.getPhone());

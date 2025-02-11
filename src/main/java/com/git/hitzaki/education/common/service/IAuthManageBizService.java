@@ -26,4 +26,6 @@ public interface IAuthManageBizService {
     PageResult<UserVo> userPage(UserQueryParam queryParam);
 
     PageResult<AdminVo> adminPage(AdminQueryParam queryParam);
+
+    void permissionDelete(PermissionOperateParam operateParam);
 }

@@ -10,11 +10,7 @@ import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
 import com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
-import com.git.hitzaki.education.common.utils.SnowflakeIdUtil;
-import com.git.hitzaki.education.model.auth.param.AdminQueryParam;
-import com.git.hitzaki.education.model.auth.param.PermissionQueryParam;
-import com.git.hitzaki.education.model.auth.param.RoleQueryParam;
-import com.git.hitzaki.education.model.auth.param.UserQueryParam;
+import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.AdminVo;
 import com.git.hitzaki.education.model.auth.vo.PermissionVo;
 import com.git.hitzaki.education.model.auth.vo.RoleVo;
@@ -37,9 +33,6 @@ public class AuthManageBizService implements IAuthManageBizService {
 
     @Autowired
     private IUserInfoService userInfoService;
-
-    @Autowired
-    private SnowflakeIdUtil snowflakeIdUtil;
 
     @Autowired
     private RoleMapper roleMapper;
@@ -88,5 +81,10 @@ public class AuthManageBizService implements IAuthManageBizService {
     public PageResult<AdminVo> adminPage(AdminQueryParam queryParam) {
         Page<AdminVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
         return adminAccountInfoMapper.adminPage(page, queryParam);
+    }
+
+    @Override
+    public void permissionDelete(PermissionOperateParam operateParam) {
+
     }
 }
