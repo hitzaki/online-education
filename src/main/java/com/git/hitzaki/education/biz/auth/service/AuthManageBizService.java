@@ -7,6 +7,7 @@ import com.git.hitzaki.education.biz.auth.mapper.AdminAccountInfoMapper;
 import com.git.hitzaki.education.biz.auth.mapper.PermissionMapper;
 import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
 import com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper;
+import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
 import com.git.hitzaki.education.common.utils.IdGenerator;
@@ -103,7 +104,11 @@ public class AuthManageBizService implements IAuthManageBizService {
         permissionEntity.setId(IdGenerator.generateId());
         permissionEntity.setCode(operateParam.getCode());
         permissionEntity.setName(operateParam.getName());
-        permissionService.save(permissionEntity);
+        try {
+            permissionService.save(permissionEntity);
+        }catch (Exception e){
+            throw new CommonBizException("code或名称重复");
+        }
     }
 
     @Override
@@ -117,7 +122,11 @@ public class AuthManageBizService implements IAuthManageBizService {
         roleEntity.setId(IdGenerator.generateId());
         roleEntity.setRoleCode(operateParam.getCode());
         roleEntity.setRoleName(operateParam.getName());
-        roleService.save(roleEntity);
+        try {
+            roleService.save(roleEntity);
+        }catch (Exception e){
+            throw new CommonBizException("code或名称重复");
+        }
     }
 
     @Override
@@ -182,7 +191,11 @@ public class AuthManageBizService implements IAuthManageBizService {
         admin.setAvatar(operateParam.getAvatar());
         admin.setNickName(operateParam.getNickName());
         admin.setType(operateParam.getType());
-        adminAccountInfoService.save(admin);
+        try {
+            adminAccountInfoService.save(admin);
+        }catch (Exception e){
+            throw new CommonBizException("账号重复");
+        }
     }
 
 }

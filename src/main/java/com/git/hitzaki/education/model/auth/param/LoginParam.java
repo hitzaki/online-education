@@ -27,6 +27,9 @@ public class LoginParam {
     @ApiModelProperty("微信code")
     private String wxCode;
 
+    @ApiModelProperty("业务员唯一编码")
+    private String salesmanCode;
+
     public void checkAdminLogin(){
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
             throw new CommonBizException("账号密码不能为空");
