@@ -16,6 +16,8 @@ import java.util.Objects;
 public class LoginParam {
     @ApiModelProperty("账号")
     private String account;
+    @ApiModelProperty("用户名")
+    private String username;
     @ApiModelProperty("密码 - 管理员登录使用")
     private String password;
 
@@ -40,6 +42,9 @@ public class LoginParam {
     private String nickName;
 
     public void checkAdminLogin(){
+        if (StringUtils.isBlank(account)) {
+            account = username;
+        }
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
             throw new CommonBizException("账号密码不能为空");
         }
