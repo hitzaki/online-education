@@ -1,8 +1,6 @@
 package com.git.hitzaki.education.api;
 
-import cn.dev33.satoken.stp.SaLoginModel;
-import cn.dev33.satoken.stp.SaTokenInfo;
-import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.annotation.SaCheckRole;
 import com.git.hitzaki.education.bus.auth.AuthCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
@@ -11,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -58,12 +55,14 @@ public class AuthApi {
 
     @ApiOperation("用户拓展信息获取")
     @PostMapping("/userExtendInfo")
+    @SaCheckRole("user")
     public BizResult<Map<String, Object>> userExtendInfo() {
         return BizResult.success(authCommonService.userExtendInfo());
     }
 
     @ApiOperation("用户修改资料")
     @PostMapping("/updateUserInfo")
+    @SaCheckRole("user")
     public BizResult<Void> updateUserInfo(@RequestBody UserOperateParam operateParam) {
         authCommonService.updateUserInfo(operateParam);
         return BizResult.success();
@@ -73,6 +72,7 @@ public class AuthApi {
 
     @ApiOperation("用户退出登录")
     @PostMapping("/userLogout")
+    @SaCheckRole("user")
     public BizResult<Void> userLogout() {
         authCommonService.userLogout();
         return BizResult.success();

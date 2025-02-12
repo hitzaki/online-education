@@ -6,6 +6,7 @@ import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.AuthInfoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +46,11 @@ public class StpInterfaceImpl implements StpInterface {
 
         Long userId = AuthInfoUtils.getLoginId();
         // 获取角色列表
-        return authBizService.getRoleList(userId);
+        List<String> roleList = authBizService.getRoleList(userId);
+        if (CollectionUtils.isEmpty(roleList)){
+            return Collections.singletonList(userType);
+        }
+        roleList.add(userType);
+        return roleList;
     }
 }
