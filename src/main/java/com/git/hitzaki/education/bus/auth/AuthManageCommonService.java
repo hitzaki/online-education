@@ -110,4 +110,7 @@ public class AuthManageCommonService {
         authManageBizService.adminInsert(operateParam);
     }
 
+    public String salesmanLink() {
+        return authManageBizService.salesmanLink(AuthInfoUtils.getLoginId());
+    }
 }

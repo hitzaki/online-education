@@ -34,7 +34,6 @@ public class MD5Util {
         } catch (NoSuchAlgorithmException e) {  
             e.printStackTrace();  
             return null;  
-        }  
-  
-    }  
+        }
+    }
 }

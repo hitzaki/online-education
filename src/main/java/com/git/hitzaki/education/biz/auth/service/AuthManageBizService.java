@@ -7,16 +7,19 @@ import com.git.hitzaki.education.biz.auth.mapper.AdminAccountInfoMapper;
 import com.git.hitzaki.education.biz.auth.mapper.PermissionMapper;
 import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
 import com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper;
+import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
 import com.git.hitzaki.education.common.utils.IdGenerator;
+import com.git.hitzaki.education.common.utils.MD5Util;
 import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.AdminVo;
 import com.git.hitzaki.education.model.auth.vo.PermissionVo;
 import com.git.hitzaki.education.model.auth.vo.RoleVo;
 import com.git.hitzaki.education.model.auth.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -55,6 +58,9 @@ public class AuthManageBizService implements IAuthManageBizService {
 
     @Autowired
     private AdminAccountInfoMapper adminAccountInfoMapper;
+
+    @Value("${my.rootUrl}")
+    private String rootUrl;
 
 
     @Override
@@ -191,11 +197,20 @@ public class AuthManageBizService implements IAuthManageBizService {
         admin.setAvatar(operateParam.getAvatar());
         admin.setNickName(operateParam.getNickName());
         admin.setType(operateParam.getType());
+        if (admin.getType().equals(LoginTypeEnum.SALESMAN.getCode())){
+            admin.setSalesmanCode(MD5Util.getMd5(admin.getAccount()).substring(0, 20));
+        }
         try {
             adminAccountInfoService.save(admin);
         }catch (Exception e){
             throw new CommonBizException("账号重复");
         }
+    }
+
+    @Override
+    public String salesmanLink(Long loginId) {
+        AdminAccountInfoEntity salesman = adminAccountInfoService.getById(loginId);
+        return rootUrl + salesman.getSalesmanCode();
     }
 
 }

@@ -26,3 +26,7 @@ sa-token:
   token-style: uuid
   is-log: false
   jwt-secret-key: onlineEducationTokenKey
+
+# 自定义config
+my:
+  rootUrl: http://8.146.200.93:8888

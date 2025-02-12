@@ -51,4 +51,5 @@ public interface IAuthManageBizService {
 
     void adminInsert(AdminOperateParam operateParam);
 
+    String salesmanLink(Long loginId);
 }

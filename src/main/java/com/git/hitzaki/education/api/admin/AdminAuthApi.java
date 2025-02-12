@@ -194,7 +194,10 @@ public class AdminAuthApi {
     // TODO 操作权限注解
     // TODO 管理员改变头像
     // TODO 管理员改变资料
-    // TODO 业务员分页查看自己对应的用户列表
-    // TODO 业务员生成分享链接
+    @ApiOperation("业务员生成分享链接")
+    @PostMapping("/salesmanLink")
+    public BizResult<String> salesmanLink() {
+        return BizResult.success(authManageCommonService.salesmanLink());
+    }
 
 }
