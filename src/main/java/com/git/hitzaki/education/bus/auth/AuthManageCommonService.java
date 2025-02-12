@@ -1,7 +1,9 @@
 package com.git.hitzaki.education.bus.auth;
 
+import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.IAuthManageBizService;
+import com.git.hitzaki.education.common.utils.AuthInfoUtils;
 import com.git.hitzaki.education.model.auth.param.*;
 import com.git.hitzaki.education.model.auth.vo.*;
 import lombok.extern.slf4j.Slf4j;
@@ -78,6 +80,9 @@ public class AuthManageCommonService {
     }
 
     public PageResult<UserVo> userPage(UserQueryParam queryParam) {
+        if (LoginTypeEnum.SALESMAN.getType().equals(AuthInfoUtils.getLoginType())){
+            queryParam.setSalesmanId(AuthInfoUtils.getLoginId());
+        }
         return authManageBizService.userPage(queryParam);
     }
 

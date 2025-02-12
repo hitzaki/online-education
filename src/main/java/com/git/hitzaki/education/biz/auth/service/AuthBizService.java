@@ -16,6 +16,8 @@ import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.AuthInfoUtils;
 import com.git.hitzaki.education.common.utils.IdGenerator;
+import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
+import com.git.hitzaki.education.model.auth.constant.AuthConstant;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 import com.git.hitzaki.education.model.auth.param.UserOperateParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,6 +110,30 @@ public class AuthBizService implements IAuthBizService {
                 // wxCode没绑定之前暂时等于手机号
                 user.setWechatCode(loginParam.getPhone());
             }
+
+            // 构造明细
+            UserInfoEntity userInfoEntity = new UserInfoEntity();
+            userInfoEntity.setId(IdGenerator.generateId());
+            userInfoEntity.setAccountId(user.getId());
+            userInfoEntity.setAvatar(loginParam.getAvatar());
+            userInfoEntity.setNickName(loginParam.getNickName());
+
+            // 业务员
+            if (StringUtils.isNotBlank(loginParam.getSalesmanCode())){
+                Long salesmanId = adminAccountInfoService.selectBySalesmanCode(loginParam.getSalesmanCode());
+                if (FormatValidationUtil.isId(salesmanId)){
+                    userInfoEntity.setSalesmanId(salesmanId);
+                }
+            }
+            // TODO 如果有token, 则通过wx访问token获取微信信息
+            // 设置头像默认值
+            if (StringUtils.isBlank(userInfoEntity.getAvatar())){
+                userInfoEntity.setAvatar(AuthConstant.DEFAULT_AVATAR);
+            }
+            if (StringUtils.isBlank(userInfoEntity.getAvatar())){
+                userInfoEntity.setAvatar("用户" + user.getPhone());
+            }
+            userInfoService.save(userInfoEntity);
             userAccountInfoService.save(user);
         }
 

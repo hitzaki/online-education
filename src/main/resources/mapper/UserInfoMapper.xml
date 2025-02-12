@@ -17,5 +17,8 @@
         <if test="param.nickName != null and param.nickName != ''">
             AND ui.nick_name = #{param.nickName}
         </if>
+        <if test="param.salesmanId != null">
+            AND ui.salesman_id = #{param.salesmanId}
+        </if>
     </select>
 </mapper>

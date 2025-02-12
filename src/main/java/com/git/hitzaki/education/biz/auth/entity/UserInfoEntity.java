@@ -68,9 +68,9 @@ public class UserInfoEntity implements Serializable {
     private BigDecimal points;
 
     /**
-     * 推荐人用户id
+     * 业务员id
      */
-    private Long recommendId;
+    private Long salesmanId;
 
     /**
      * 创建时间

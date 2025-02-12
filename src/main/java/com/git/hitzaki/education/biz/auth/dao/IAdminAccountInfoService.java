@@ -16,4 +16,6 @@ import com.git.hitzaki.education.model.auth.param.LoginParam;
 public interface IAdminAccountInfoService extends IService<AdminAccountInfoEntity> {
 
     AdminAccountInfoEntity selectByLoginParam(LoginParam loginParam);
+
+    Long selectBySalesmanCode(String salesmanCode);
 }

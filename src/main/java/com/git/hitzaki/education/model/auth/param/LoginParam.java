@@ -30,6 +30,15 @@ public class LoginParam {
     @ApiModelProperty("业务员唯一编码")
     private String salesmanCode;
 
+    @ApiModelProperty("wx访问token")
+    private String wxAccessToken;
+
+    @ApiModelProperty("注册使用信息-头像")
+    private String avatar;
+
+    @ApiModelProperty("注册使用信息-昵称")
+    private String nickName;
+
     public void checkAdminLogin(){
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
             throw new CommonBizException("账号密码不能为空");

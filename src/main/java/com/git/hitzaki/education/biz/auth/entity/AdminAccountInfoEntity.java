@@ -54,6 +54,11 @@ public class AdminAccountInfoEntity implements Serializable {
     private String nickName;
 
     /**
+     * 业务员code
+     */
+    private String salesmanCode;
+
+    /**
      * 头像
      */
     private String avatar;

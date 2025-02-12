@@ -11,4 +11,6 @@ import lombok.Data;
 public class UserQueryParam extends PageParams {
     private String phone;
     private String nickName;
+
+    private Long salesmanId;
 }

@@ -36,4 +36,16 @@ public class AdminAccountInfoServiceImpl extends ServiceImpl<AdminAccountInfoMap
         }
         return adminList.get(0);
     }
+
+    @Override
+    public Long selectBySalesmanCode(String salesmanCode) {
+        LambdaQueryWrapper<AdminAccountInfoEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(AdminAccountInfoEntity::getSalesmanCode, salesmanCode)
+                .eq(AdminAccountInfoEntity::getStatus, AdminStatusEnum.USE.getCode());
+        List<AdminAccountInfoEntity> adminList = list(wrapper);
+        if (CollectionUtils.isEmpty(adminList)){
+            return null;
+        }
+        return adminList.get(0).getId();
+    }
 }

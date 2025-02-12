@@ -129,14 +129,14 @@ public class AdminAuthApi {
         return authManageCommonService.userPage(queryParam);
     }
 
-    @ApiOperation("权限-封禁")
+    @ApiOperation("用户-封禁")
     @PostMapping("/userBan")
     public BizResult<Void> userBan(UserOperateParam operateParam) {
         authManageCommonService.userBan(operateParam);
         return BizResult.success();
     }
 
-    @ApiOperation("权限-解除封禁")
+    @ApiOperation("用户-解除封禁")
     @PostMapping("/userUnban")
     public BizResult<Void> userUnban(UserOperateParam operateParam) {
         authManageCommonService.userUnban(operateParam);
@@ -188,6 +188,8 @@ public class AdminAuthApi {
         authManageCommonService.adminBan(operateParam);
         return BizResult.success();
     }
+
+
 
     // TODO 操作权限注解
     // TODO 管理员改变头像
