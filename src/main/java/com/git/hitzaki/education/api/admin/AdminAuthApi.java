@@ -61,14 +61,14 @@ public class AdminAuthApi {
     @ApiOperation("权限-分页查询")
     @PostMapping("/permissionPage")
     @SaCheckRole("admin")
-    public PageResult<PermissionVo> permissionPage(PermissionQueryParam queryParam) {
+    public PageResult<PermissionVo> permissionPage(@RequestBody PermissionQueryParam queryParam) {
         return authManageCommonService.permissionPage(queryParam);
     }
 
     @ApiOperation("权限-删除")
     @PostMapping("/permissionDelete")
     @SaCheckRole("admin")
-    public BizResult<Void> permissionDelete(PermissionOperateParam operateParam) {
+    public BizResult<Void> permissionDelete(@RequestBody PermissionOperateParam operateParam) {
         authManageCommonService.permissionDelete(operateParam);
         return BizResult.success();
     }
@@ -76,7 +76,7 @@ public class AdminAuthApi {
     @ApiOperation("权限-新增")
     @PostMapping("/permissionInsert")
     @SaCheckRole("admin")
-    public BizResult<Void> permissionInsert(PermissionOperateParam operateParam) {
+    public BizResult<Void> permissionInsert(@RequestBody PermissionOperateParam operateParam) {
         authManageCommonService.permissionInsert(operateParam);
         return BizResult.success();
     }
@@ -87,14 +87,14 @@ public class AdminAuthApi {
     @ApiOperation("角色-分页查询")
     @PostMapping("/rolePage")
     @SaCheckRole(value = {"admin", "salesman"}, mode = SaMode.OR)
-    public PageResult<RoleVo> rolePage(RoleQueryParam queryParam) {
+    public PageResult<RoleVo> rolePage(@RequestBody RoleQueryParam queryParam) {
         return authManageCommonService.rolePage(queryParam);
     }
 
     @ApiOperation("角色-删除")
     @PostMapping("/roleDelete")
     @SaCheckRole("admin")
-    public BizResult<Void> roleDelete(RoleOperateParam operateParam) {
+    public BizResult<Void> roleDelete(@RequestBody RoleOperateParam operateParam) {
         authManageCommonService.roleDelete(operateParam);
         return BizResult.success();
     }
@@ -102,7 +102,7 @@ public class AdminAuthApi {
     @ApiOperation("角色-新增")
     @PostMapping("/roleInsert")
     @SaCheckRole("admin")
-    public BizResult<Void> roleInsert(RoleOperateParam operateParam) {
+    public BizResult<Void> roleInsert(@RequestBody RoleOperateParam operateParam) {
         authManageCommonService.roleInsert(operateParam);
         return BizResult.success();
     }
@@ -113,14 +113,14 @@ public class AdminAuthApi {
     @ApiOperation("角色权限-分页查询")
     @PostMapping("/rolePermissionPage")
     @SaCheckRole("admin")
-    public PageResult<PermissionVo> rolePermissionPage(PermissionQueryParam queryParam) {
+    public PageResult<PermissionVo> rolePermissionPage(@RequestBody PermissionQueryParam queryParam) {
         return authManageCommonService.rolePermissionPage(queryParam);
     }
 
     @ApiOperation("角色权限-删除")
     @PostMapping("/rolePermissionDelete")
     @SaCheckRole("admin")
-    public BizResult<Void> rolePermissionDelete(RolePermissionOperateParam operateParam) {
+    public BizResult<Void> rolePermissionDelete(@RequestBody RolePermissionOperateParam operateParam) {
         authManageCommonService.rolePermissionDelete(operateParam);
         return BizResult.success();
     }
@@ -128,7 +128,7 @@ public class AdminAuthApi {
     @ApiOperation("角色权限-新增")
     @PostMapping("/rolePermissionInsert")
     @SaCheckRole("admin")
-    public BizResult<Void> rolePermissionInsert(RolePermissionOperateParam operateParam) {
+    public BizResult<Void> rolePermissionInsert(@RequestBody RolePermissionOperateParam operateParam) {
         authManageCommonService.rolePermissionInsert(operateParam);
         return BizResult.success();
     }
@@ -139,14 +139,14 @@ public class AdminAuthApi {
     @ApiOperation("用户-分页查询")
     @PostMapping("/userPage")
     @SaCheckRole("admin")
-    public PageResult<UserVo> userPage(UserQueryParam queryParam) {
+    public PageResult<UserVo> userPage(@RequestBody UserQueryParam queryParam) {
         return authManageCommonService.userPage(queryParam);
     }
 
     @ApiOperation("用户-封禁")
     @PostMapping("/userBan")
     @SaCheckRole("admin")
-    public BizResult<Void> userBan(UserOperateParam operateParam) {
+    public BizResult<Void> userBan(@RequestBody UserOperateParam operateParam) {
         authManageCommonService.userBan(operateParam);
         return BizResult.success();
     }
@@ -154,7 +154,7 @@ public class AdminAuthApi {
     @ApiOperation("用户-解除封禁")
     @PostMapping("/userUnban")
     @SaCheckRole("admin")
-    public BizResult<Void> userUnban(UserOperateParam operateParam) {
+    public BizResult<Void> userUnban(@RequestBody UserOperateParam operateParam) {
         authManageCommonService.userUnban(operateParam);
         return BizResult.success();
     }
@@ -165,14 +165,14 @@ public class AdminAuthApi {
     @ApiOperation("用户角色-分页查询")
     @PostMapping("/userRolePage")
     @SaCheckRole("admin")
-    public PageResult<RoleVo> userRolePage(RoleQueryParam queryParam) {
+    public PageResult<RoleVo> userRolePage(@RequestBody RoleQueryParam queryParam) {
         return authManageCommonService.userRolePage(queryParam);
     }
 
     @ApiOperation("用户角色-新增")
     @PostMapping("/userRoleInsert")
     @SaCheckRole("admin")
-    public BizResult<Void> userRoleInsert(UserRoleOperateParam operateParam) {
+    public BizResult<Void> userRoleInsert(@RequestBody UserRoleOperateParam operateParam) {
         authManageCommonService.userRoleInsert(operateParam);
         return BizResult.success();
     }
@@ -180,7 +180,7 @@ public class AdminAuthApi {
     @ApiOperation("用户角色-删除")
     @PostMapping("/userRoleDelete")
     @SaCheckRole("admin")
-    public BizResult<Void> userRoleDelete(UserRoleOperateParam operateParam) {
+    public BizResult<Void> userRoleDelete(@RequestBody UserRoleOperateParam operateParam) {
         authManageCommonService.userRoleDelete(operateParam);
         return BizResult.success();
     }
@@ -191,14 +191,14 @@ public class AdminAuthApi {
     @ApiOperation("管理员-分页查询")
     @PostMapping("/adminPage")
     @SaCheckRole("admin")
-    public PageResult<AdminVo> adminPage(AdminQueryParam queryParam) {
+    public PageResult<AdminVo> adminPage(@RequestBody AdminQueryParam queryParam) {
         return authManageCommonService.adminPage(queryParam);
     }
 
     @ApiOperation("管理员-新增")
     @PostMapping("/adminInsert")
     @SaCheckRole("admin")
-    public BizResult<Void> adminInsert(AdminOperateParam operateParam) {
+    public BizResult<Void> adminInsert(@RequestBody AdminOperateParam operateParam) {
         authManageCommonService.adminInsert(operateParam);
         return BizResult.success();
     }
@@ -206,7 +206,7 @@ public class AdminAuthApi {
     @ApiOperation("管理员-停用")
     @PostMapping("/adminBan")
     @SaCheckRole("admin")
-    public BizResult<Void> adminBan(AdminOperateParam operateParam) {
+    public BizResult<Void> adminBan(@RequestBody AdminOperateParam operateParam) {
         authManageCommonService.adminBan(operateParam);
         return BizResult.success();
     }

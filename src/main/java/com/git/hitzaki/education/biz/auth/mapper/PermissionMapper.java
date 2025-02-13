@@ -23,9 +23,9 @@ public interface PermissionMapper extends BaseMapper<PermissionEntity> {
 
     List<String> selectPermissionByUserId(Long userId);
 
-    PageResult<PermissionVo> permissionPage(@Param("page") Page<PermissionVo> page,
+    Page<PermissionVo> permissionPage(@Param("page") Page<PermissionVo> page,
                                             @Param("param") PermissionQueryParam queryParam);
 
-    PageResult<PermissionVo> rolePermissionPage(@Param("page") Page<PermissionVo> page,
+    Page<PermissionVo> rolePermissionPage(@Param("page") Page<PermissionVo> page,
                                                 @Param("param") PermissionQueryParam queryParam);
 }

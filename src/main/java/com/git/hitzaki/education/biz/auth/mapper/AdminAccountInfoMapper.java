@@ -19,6 +19,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface AdminAccountInfoMapper extends BaseMapper<AdminAccountInfoEntity> {
 
-    PageResult<AdminVo> adminPage(@Param("page") Page<AdminVo> page,
+    Page<AdminVo> adminPage(@Param("page") Page<AdminVo> page,
                                   @Param("param") AdminQueryParam queryParam);
 }

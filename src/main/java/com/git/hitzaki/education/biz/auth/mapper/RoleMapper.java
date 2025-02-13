@@ -23,9 +23,9 @@ public interface RoleMapper extends BaseMapper<RoleEntity> {
 
     List<String> selectRoleByUserId(@Param("userId") Long userId);
 
-    PageResult<RoleVo> rolePage(@Param("page") Page<RoleVo> page,
+    Page<RoleVo> rolePage(@Param("page") Page<RoleVo> page,
                                 @Param("param") RoleQueryParam queryParam);
 
-    PageResult<RoleVo> userRolePage(@Param("page") Page<RoleVo> page,
+    Page<RoleVo> userRolePage(@Param("page") Page<RoleVo> page,
                                 @Param("param") RoleQueryParam queryParam);
 }

@@ -66,37 +66,49 @@ public class AuthManageBizService implements IAuthManageBizService {
     @Override
     public PageResult<PermissionVo> permissionPage(PermissionQueryParam queryParam) {
         Page<PermissionVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return permissionMapper.permissionPage(page, queryParam);
+        Page<PermissionVo> permissionVoPage = permissionMapper.permissionPage(page, queryParam);
+        return new PageResult<>(permissionVoPage.getRecords(),
+                permissionVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override
     public PageResult<RoleVo> rolePage(RoleQueryParam queryParam) {
         Page<RoleVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return roleMapper.rolePage(page, queryParam);
+        Page<RoleVo> roleVoPage = roleMapper.rolePage(page, queryParam);
+        return new PageResult<>(roleVoPage.getRecords(),
+                roleVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override
     public PageResult<PermissionVo> rolePermissionPage(PermissionQueryParam queryParam) {
         Page<PermissionVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return permissionMapper.rolePermissionPage(page, queryParam);
+        Page<PermissionVo> permissionVoPage = permissionMapper.rolePermissionPage(page, queryParam);
+        return new PageResult<>(permissionVoPage.getRecords(),
+                permissionVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override
     public PageResult<RoleVo> userRolePage(RoleQueryParam queryParam) {
         Page<RoleVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return roleMapper.userRolePage(page, queryParam);
+        Page<RoleVo> roleVoPage = roleMapper.userRolePage(page, queryParam);
+        return new PageResult<>(roleVoPage.getRecords(),
+                roleVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override
     public PageResult<UserVo> userPage(UserQueryParam queryParam) {
         Page<UserVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return userInfoMapper.userPage(page, queryParam);
+        Page<UserVo> userVoPage = userInfoMapper.userPage(page, queryParam);
+        return new PageResult<>(userVoPage.getRecords(),
+                userVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override
     public PageResult<AdminVo> adminPage(AdminQueryParam queryParam) {
         Page<AdminVo> page = new Page<>(queryParam.getPageNo(), queryParam.getPageSize());
-        return adminAccountInfoMapper.adminPage(page, queryParam);
+        Page<AdminVo> adminVoPage = adminAccountInfoMapper.adminPage(page, queryParam);
+        return new PageResult<>(adminVoPage.getRecords(),
+                adminVoPage.getTotal(), queryParam.getPageNo(), queryParam.getPageSize());
     }
 
     @Override

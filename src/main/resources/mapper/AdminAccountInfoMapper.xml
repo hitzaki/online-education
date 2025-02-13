@@ -8,10 +8,10 @@
         FROM admin_account_info aai
         WHERE
         aai.delete_flag = 0
-        <if test="param.account != null and param.account != ''">
+        <if test="param.account != null">
             AND aai.account = #{param.account}
         </if>
-        <if test="param.nickName != null and param.nickName != ''">
+        <if test="param.nickName != null">
             AND aai.nick_name = #{param.nickName}
         </if>
     </select>
