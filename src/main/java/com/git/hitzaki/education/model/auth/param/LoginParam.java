@@ -26,20 +26,21 @@ public class LoginParam {
     @ApiModelProperty("验证码 - 用户手机号登录使用")
     private String verifyCode;
 
-    @ApiModelProperty("微信code")
-    private String wxCode;
-
     @ApiModelProperty("业务员唯一编码")
     private String salesmanCode;
 
-    @ApiModelProperty("wx访问token")
-    private String wxAccessToken;
+    @ApiModelProperty("微信访问code")
+    private String wxCode;
 
     @ApiModelProperty("注册使用信息-头像")
     private String avatar;
 
     @ApiModelProperty("注册使用信息-昵称")
     private String nickName;
+
+    private String openId;
+    private String sessionKey;
+    private String accessToken;
 
     public void checkAdminLogin(){
         if (StringUtils.isBlank(account)) {

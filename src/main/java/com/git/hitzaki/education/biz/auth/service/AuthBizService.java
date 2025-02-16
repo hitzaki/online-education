@@ -1,6 +1,7 @@
 package com.git.hitzaki.education.biz.auth.service;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.git.hitzaki.education.biz.auth.dao.IAdminAccountInfoService;
 import com.git.hitzaki.education.biz.auth.dao.IUserAccountInfoService;
@@ -15,12 +16,15 @@ import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.service.IAuthBizService;
 import com.git.hitzaki.education.common.utils.AuthInfoUtils;
+import com.git.hitzaki.education.common.utils.HttpClientUtil;
 import com.git.hitzaki.education.common.utils.IdGenerator;
 import com.git.hitzaki.education.common.utils.validation.FormatValidationUtil;
 import com.git.hitzaki.education.model.auth.constant.AuthConstant;
+import com.git.hitzaki.education.model.auth.dto.WechatResult;
 import com.git.hitzaki.education.model.auth.param.LoginParam;
 import com.git.hitzaki.education.model.auth.param.UserOperateParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -47,6 +51,12 @@ public class AuthBizService implements IAuthBizService {
 
     @Autowired
     private PermissionMapper permissionMapper;
+
+    @Value("${my.appId}")
+    private String appId;
+
+    @Value("${my.secret}")
+    private String secret;
 
 
     @Override
@@ -82,9 +92,10 @@ public class AuthBizService implements IAuthBizService {
     @Override
     public Map<String, Object> phoneLogin(LoginParam loginParam) {
         UserAccountInfoEntity user = userAccountInfoService.getByPhone(loginParam.getPhone());
+        setWxLoginInfo(loginParam);
         // 1.手机号之前注册过, 微信号第一次绑定手机号
-        if (Objects.nonNull(user) && StringUtils.isNotBlank(loginParam.getWxCode())){
-            user.setWechatCode(loginParam.getWxCode());
+        if (Objects.nonNull(user) && StringUtils.isNotBlank(loginParam.getOpenId())){
+            user.setWechatCode(loginParam.getOpenId());
             userAccountInfoService.updateById(user);
         }
 
@@ -99,13 +110,13 @@ public class AuthBizService implements IAuthBizService {
             user.setPassword(loginParam.getPhone());
 
             // wx号+手机号绑定模式
-            if (StringUtils.isNotBlank(loginParam.getWxCode())){
+            if (StringUtils.isNotBlank(loginParam.getOpenId())){
                 // 校验此wxCode是否绑定过了
-                UserAccountInfoEntity wxUser = userAccountInfoService.getByWxCode(loginParam.getWxCode());
+                UserAccountInfoEntity wxUser = userAccountInfoService.getByWxCode(loginParam.getOpenId());
                 if (Objects.nonNull(wxUser)){
                     CommonBizException.throwError(ExceptionEnum.WX_BIND_ERROR);
                 }
-                user.setWechatCode(loginParam.getWxCode());
+                user.setWechatCode(loginParam.getOpenId());
             }else {
                 // wxCode没绑定之前暂时等于手机号
                 user.setWechatCode(loginParam.getPhone());
@@ -114,7 +125,7 @@ public class AuthBizService implements IAuthBizService {
             // 构造明细
             UserInfoEntity userInfoEntity = new UserInfoEntity();
             userInfoEntity.setId(IdGenerator.generateId());
-            userInfoEntity.setAccountId(user.getId());
+            userInfoEntity.setUserId(user.getId());
             userInfoEntity.setAvatar(loginParam.getAvatar());
             userInfoEntity.setNickName(loginParam.getNickName());
 
@@ -125,7 +136,10 @@ public class AuthBizService implements IAuthBizService {
                     userInfoEntity.setSalesmanId(salesmanId);
                 }
             }
-            // TODO 如果有token, 则通过wx访问token获取微信信息
+            // 如果有token, 则通过wx访问token获取微信信息
+            if (StringUtils.isNotBlank(loginParam.getAccessToken())){
+                setWxInfo(loginParam, userInfoEntity);
+            }
             // 设置头像默认值
             if (StringUtils.isBlank(userInfoEntity.getAvatar())){
                 userInfoEntity.setAvatar(AuthConstant.DEFAULT_AVATAR);
@@ -144,9 +158,42 @@ public class AuthBizService implements IAuthBizService {
         return result;
     }
 
+    private void setWxInfo(LoginParam loginParam, UserInfoEntity userInfoEntity) {
+        if (StringUtils.isBlank(loginParam.getAccessToken()) || StringUtils.isBlank(loginParam.getOpenId())){
+            return;
+        }
+        // 4. 获取用户信息（如果需要）
+        String userInfoUrl = String.format(
+                "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s",
+                loginParam.getAccessToken(), loginParam.getOpenId()
+        );
+        String userInfoResponse = HttpClientUtil.get(userInfoUrl);
+        JSONObject userInfoJson = JSONObject.parseObject(userInfoResponse);
+        userInfoEntity.setNickName(userInfoJson.getString("nickname"));
+        userInfoEntity.setAvatar(userInfoJson.getString("headimgurl"));
+    }
+
+    private void setWxLoginInfo(LoginParam loginParam) {
+        if (StringUtils.isBlank(loginParam.getWxCode())){
+            return;
+        }
+        String url = String.format("https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
+                appId, secret, loginParam.getWxCode()
+        );
+        String response = HttpClientUtil.get(url);
+        JSONObject json = JSONObject.parseObject(response);
+        if (!json.containsKey("openid")) {
+            CommonBizException.throwError("微信平台访问失败，请稍后重试");
+        }
+        loginParam.setOpenId(json.getString("openid"));
+        loginParam.setSessionKey(json.getString("openid"));
+        loginParam.setAccessToken(json.getString("access_token"));
+    }
+
     @Override
     public Map<String, Object> wxLogin(LoginParam loginParam) {
-        UserAccountInfoEntity user = userAccountInfoService.getByWxCode(loginParam.getWxCode());
+        setWxLoginInfo(loginParam);
+        UserAccountInfoEntity user = userAccountInfoService.getByWxCode(loginParam.getOpenId());
         if (Objects.isNull(user)){
             CommonBizException.throwError(ExceptionEnum.WX_BIND);
         }

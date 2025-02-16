@@ -37,7 +37,12 @@ public class UserAccountInfoServiceImpl extends ServiceImpl<UserAccountInfoMappe
 
     @Override
     public UserAccountInfoEntity getByWxCode(String wxCode) {
-
-        return null;
+        LambdaQueryWrapper<UserAccountInfoEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserAccountInfoEntity::getWechatCode, wxCode);
+        List<UserAccountInfoEntity> userList = list(wrapper);
+        if (CollectionUtils.isEmpty(userList)){
+            return null;
+        }
+        return userList.get(0);
     }
 }

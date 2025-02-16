@@ -4,7 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * 角色Vo
@@ -34,7 +33,7 @@ public class UserVo implements Serializable {
     /**
      * 用户id
      */
-    private Long accountId;
+    private Long userId;
 
     /**
      * 昵称
