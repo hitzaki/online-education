@@ -30,5 +30,5 @@ sa-token:
 # 自定义config
 my:
   rootUrl: http://8.146.200.93:8888
-  appId: 0c
-  secret: 2
+  appId: wx508b73a4f9f8bb2d
+  secret: 0c92ff88705f3318b05316c3f126d45d
