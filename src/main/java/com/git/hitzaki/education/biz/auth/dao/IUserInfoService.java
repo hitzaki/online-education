@@ -14,4 +14,5 @@ import com.git.hitzaki.education.biz.auth.entity.UserInfoEntity;
  */
 public interface IUserInfoService extends IService<UserInfoEntity> {
 
+    UserInfoEntity getByUserId(Long loginId);
 }

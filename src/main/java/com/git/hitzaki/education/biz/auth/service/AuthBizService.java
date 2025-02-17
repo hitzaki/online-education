@@ -144,8 +144,8 @@ public class AuthBizService implements IAuthBizService {
             if (StringUtils.isBlank(userInfoEntity.getAvatar())){
                 userInfoEntity.setAvatar(AuthConstant.DEFAULT_AVATAR);
             }
-            if (StringUtils.isBlank(userInfoEntity.getAvatar())){
-                userInfoEntity.setAvatar("用户" + user.getPhone());
+            if (StringUtils.isBlank(userInfoEntity.getNickName())){
+                userInfoEntity.setNickName("用户" + user.getPhone());
             }
             userInfoService.save(userInfoEntity);
             userAccountInfoService.save(user);
@@ -177,9 +177,10 @@ public class AuthBizService implements IAuthBizService {
         if (StringUtils.isBlank(loginParam.getWxCode())){
             return;
         }
-        String url = String.format("https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
+        String url = String.format("https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code",
                 appId, secret, loginParam.getWxCode()
         );
+        // https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
         String response = HttpClientUtil.get(url);
         JSONObject json = JSONObject.parseObject(response);
         if (!json.containsKey("openid")) {
@@ -205,7 +206,7 @@ public class AuthBizService implements IAuthBizService {
 
     @Override
     public Map<String, Object> userExtendInfo() {
-        UserInfoEntity userEntity = userInfoService.getById(AuthInfoUtils.getLoginId());
+        UserInfoEntity userEntity = userInfoService.getByUserId(AuthInfoUtils.getLoginId());
         if (Objects.isNull(userEntity)){
             CommonBizException.throwError(ExceptionEnum.AUTH_ERROR);
         }
