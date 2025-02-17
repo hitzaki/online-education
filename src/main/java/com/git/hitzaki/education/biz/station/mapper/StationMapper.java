@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.station.entity.StationEntity;
-import com.git.hitzaki.education.model.course.condition.StationPageQueryCondition;
-import com.git.hitzaki.education.model.course.vo.StationQueryVo;
+import com.git.hitzaki.education.model.station.condition.StationPageQueryCondition;
+import com.git.hitzaki.education.model.station.vo.StationQueryVo;
 import org.springframework.data.repository.query.Param;
 
 /**
@@ -19,5 +19,6 @@ import org.springframework.data.repository.query.Param;
  */
 public interface StationMapper extends BaseMapper<StationEntity> {
 
+    //TODO 优化优先级排序，考虑使用课程id进行排序 考虑去掉连表将tag拆分
     Page<StationQueryVo> stationPageQuery(IPage<StationQueryVo> page, @Param("condition") StationPageQueryCondition condition);
 }

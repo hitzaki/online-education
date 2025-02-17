@@ -1,9 +1,9 @@
-package com.git.hitzaki.education.biz.course.dao.impl;
+package com.git.hitzaki.education.biz.learnpath.dao.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.git.hitzaki.education.biz.course.entity.LearnPathEntity;
-import com.git.hitzaki.education.biz.course.mapper.LearnPathMapper;
-import com.git.hitzaki.education.biz.course.dao.ILearnPathService;
+import com.git.hitzaki.education.biz.learnpath.entity.LearnPathEntity;
+import com.git.hitzaki.education.biz.learnpath.mapper.LearnPathMapper;
+import com.git.hitzaki.education.biz.learnpath.dao.ILearnPathService;
 import org.springframework.stereotype.Service;
 
 /**
