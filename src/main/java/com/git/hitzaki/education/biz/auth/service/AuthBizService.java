@@ -231,8 +231,7 @@ public class AuthBizService implements IAuthBizService {
 
     @Override
     public void updateUserInfo(UserOperateParam operateParam) {
-        UserInfoEntity userInfoEntity = new UserInfoEntity();
-        userInfoEntity.setId(AuthInfoUtils.getLoginId());
+        UserInfoEntity userInfoEntity = userInfoService.getByUserId(AuthInfoUtils.getLoginId());
         if (StringUtils.isNotBlank(operateParam.getAvatar())){
             userInfoEntity.setAvatar(operateParam.getAvatar());
         }
