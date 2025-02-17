@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.model.course.param;
+package com.git.hitzaki.education.model.station.param;
 
 import com.git.hitzaki.education.common.model.PageParams;
 import lombok.Data;

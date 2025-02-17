@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.learnpath.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,61 +11,47 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 学习路线明细表
+ *
  * </p>
  *
- * @author author
- * @since 2025-01-26
+ * @author Ezreal
+ * @since 2025-02-12
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("learn_path_detail")
-public class LearnPathDetailEntity implements Serializable {
+@TableName("learn_path_mapping")
+public class LearnPathMappingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 学习路线id
+     * 用户id
      */
-    private Long learnId;
+    private Long userId;
 
     /**
-     * 课程id
+     * 路线id
      */
-    private Long courseId;
+    private Long pathId;
 
     /**
-     * 排序
+     * 逻辑删除
      */
-    private Integer sort;
-
-    /**
-     * 标题
-     */
-    private String title;
-
-    /**
-     * 简介
-     */
-    private String description;
-
-    private LocalDateTime updateTime;
-
-    private LocalDateTime createTime;
-
     private Integer deleteFlag;
 
     /**
-     * 学习目标
+     * 创建时间
      */
-    private String target;
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
 
 }

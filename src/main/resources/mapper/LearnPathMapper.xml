@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.git.hitzaki.education.biz.course.mapper.LearnPathMapper">
+<mapper namespace="com.git.hitzaki.education.biz.learnpath.mapper.LearnPathMapper">
 
+    <select id="queryById" resultType="com.git.hitzaki.education.model.learnpath.vo.LearnPathQueryVo"
+            parameterType="java.lang.Long">
+        select id,title,description,delete_flag
+        from learn_path
+        where id=#{id}
+    </select>
+    <select id="queryDetailByPathId" resultType="com.git.hitzaki.education.model.learnpath.vo.LearnPathDetailQueryVo"
+            parameterType="java.lang.Long">
+        select id, path_id,sort,title,description,target
+        from learn_path_detail
+        where delete_flag = 0 and path_id = #{id}
+        order by sort
+    </select>
 </mapper>

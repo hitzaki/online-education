@@ -1,5 +1,6 @@
-package com.git.hitzaki.education.model.course.vo;
+package com.git.hitzaki.education.model.station.vo;
 
+import com.git.hitzaki.education.model.course.vo.CompanyQueryVo;
 import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import lombok.Data;
 
@@ -18,14 +19,19 @@ public class StationQueryVo {
     private String title;
 
     /**
-     * 省市区
+     * 省
      */
-    private String region;
-
+    private String province;
     /**
      * 市
      */
     private String city;
+
+
+    /**
+     * 区
+     */
+    private String region;
 
     /**
      * 详细地址
@@ -87,4 +93,9 @@ public class StationQueryVo {
      * 标签
      */
     private List<TagQueryVo> tagList;
+
+    /**
+     * 学习路线
+     */
+    private Long pathId;
 }

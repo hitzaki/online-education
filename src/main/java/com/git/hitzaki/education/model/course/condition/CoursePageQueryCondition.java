@@ -8,4 +8,8 @@ import java.util.List;
 @Data
 public class CoursePageQueryCondition extends PageParams {
 
+    private Long userId;
+
+    private Long recentlyId;
+
 }

@@ -1,8 +1,8 @@
-package com.git.hitzaki.education.biz.course.dao;
+package com.git.hitzaki.education.biz.learnpath.dao;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.git.hitzaki.education.biz.course.entity.LearnPathDetailEntity;
+import com.git.hitzaki.education.biz.learnpath.entity.LearnPathDetailEntity;
 
 /**
  * <p>

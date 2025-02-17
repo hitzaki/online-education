@@ -11,51 +11,60 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 课程章节/小节
+ *
  * </p>
  *
- * @author author
- * @since 2025-01-26
+ * @author Ezreal
+ * @since 2025-02-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("chapter")
-public class ChapterEntity implements Serializable {
+@TableName("course_user_mapping")
+public class CourseUserMappingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 课程ID
+     * 用户
+     */
+    private Long userId;
+
+    /**
+     * 课程
      */
     private Long courseId;
 
     /**
-     * 视频ID
+     * 上次观看时间
      */
-    private Long videoId;
+    private LocalDateTime lastView;
 
     /**
-     * 章节名称
+     * 购买时间
      */
-    private String title;
+    private LocalDateTime buyTime;
 
     /**
-     * 显示排序
+     * 删除标记
      */
-    private Integer sort;
+    private Integer deleteFlag;
 
-    private LocalDateTime updateTime;
-
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
 
-    private Integer deleteFlag;
+    /**
+     * 修改时间
+     */
+    private LocalDateTime updateTime;
 
 
 }

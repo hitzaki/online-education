@@ -8,6 +8,7 @@ import com.git.hitzaki.education.biz.tag.mapper.CommonTagMapper;
 import com.git.hitzaki.education.biz.tag.mapper.TagMappingMapper;
 import com.git.hitzaki.education.biz.tag.rankservice.TagRankDispatcher;
 import com.git.hitzaki.education.common.exception.CommonBizException;
+import com.git.hitzaki.education.common.service.ITagBizService;
 import com.git.hitzaki.education.model.tag.constant.TagRankEnum;
 import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-public class TagBizService {
+public class TagBizService implements ITagBizService {
     @Autowired
     private TagRankDispatcher tagRankDispatcher;
     @Autowired
@@ -36,10 +37,13 @@ public class TagBizService {
     @Autowired
     private ICommonTagService iCommonTagService;
 
+    @Override
     public List<Long> computeRankList(TagRankEnum type) {
         return tagRankDispatcher.getTagRank(type);
     }
 
+
+    @Override
     public List<TagQueryVo> queryTagByTargetId(List<Long> idList, Integer type) {
         if(CollectionUtils.isEmpty(idList)){
             return new ArrayList<>();
