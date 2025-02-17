@@ -1,48 +1,20 @@
-package com.git.hitzaki.education.biz.station.entity;
+package com.git.hitzaki.education.model.station.param;
+
+import com.git.hitzaki.education.model.course.vo.CompanyQueryVo;
+import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
+import lombok.Data;
 
 import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import java.util.List;
 
-/**
- * <p>
- * 岗位
- * </p>
- *
- * @author author
- * @since 2025-01-26
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@TableName("station")
-public class StationEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
+public class StationSaveOrEditParam {
     private Long id;
-    private Long subjectId;
 
     /**
      * 岗位名
      */
     private String title;
-
-    private LocalDateTime updateTime;
-
-    private Boolean deleteFlag;
-
-    private LocalDateTime createTime;
 
     /**
      * 省
@@ -94,6 +66,7 @@ public class StationEntity implements Serializable {
      */
     private Long companyId;
 
+
     /**
      * 职位描述
      */
@@ -110,8 +83,7 @@ public class StationEntity implements Serializable {
     private String addressImage;
 
     /**
-     * 学习路线
+     * 标签
      */
-    private Long pathId;
-
+    private List<Long> tagList;
 }

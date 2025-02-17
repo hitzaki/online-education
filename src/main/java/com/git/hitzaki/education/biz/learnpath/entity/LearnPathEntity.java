@@ -1,4 +1,4 @@
-package com.git.hitzaki.education.biz.course.entity;
+package com.git.hitzaki.education.biz.learnpath.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -30,6 +30,8 @@ public class LearnPathEntity implements Serializable {
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+
+    private Long subjectId;
 
     /**
      * 学习路线表题

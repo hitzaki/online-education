@@ -19,9 +19,9 @@ public class TagRankDispatcher {
         computers.forEach(computer-> computerMap.put(computer.getKey(),computer));
     }
 
-
+    //TODO 增加未登录状态下的查询
     public List<Long> getTagRank(TagRankEnum type){
-        TagRankComputer tagRankComputer = computerMap.get(computerMap);
+        TagRankComputer tagRankComputer = computerMap.get(type);
         if(Objects.isNull(tagRankComputer)){
             throw new CommonBizException("获取tag排行类错误");
         }

@@ -35,6 +35,15 @@ public class CourseController {
         return BizResult.success(courseCommonService.pageQueryMyCourse(param));
     }
 
+    /**
+     * 收藏课程分页查询
+     */
+    @RequestMapping("/collect/course/page/query")
+    public BizResult<PageResult<CourseQueryVo>> pageQueryCollectCourse(@RequestBody CoursePageQueryParam param) {
+
+        return BizResult.success(courseCommonService.pageQueryCollectCourse(param));
+    }
+
 
 
     //TODO 课程详情
