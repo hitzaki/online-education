@@ -130,7 +130,7 @@ public class SnowflakeIdUtil {
          * 12位序列号，1111 1111 1111
          * */
         long id = ((now - twepoch) << 22) | (workerId << 12) | sequence;
-        return id;
+        return id >> 8;
     }
 
     /**

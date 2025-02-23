@@ -222,7 +222,7 @@ public class AuthManageBizService implements IAuthManageBizService {
     @Override
     public String salesmanLink(Long loginId) {
         AdminAccountInfoEntity salesman = adminAccountInfoService.getById(loginId);
-        return rootUrl + salesman.getSalesmanCode();
+        return rootUrl + "/" + salesman.getSalesmanCode();
     }
 
 }
