@@ -36,10 +36,7 @@ public class ChapterEntity implements Serializable {
      */
     private Long courseId;
 
-    /**
-     * 视频ID
-     */
-    private Long videoId;
+
 
     /**
      * 章节名称

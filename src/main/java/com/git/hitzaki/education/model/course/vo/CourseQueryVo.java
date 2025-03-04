@@ -1,6 +1,7 @@
 package com.git.hitzaki.education.model.course.vo;
 
 import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
+import com.git.hitzaki.education.model.teacher.vo.TeacherQueryVo;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -15,6 +16,8 @@ public class CourseQueryVo {
      * 课程讲师ID
      */
     private Long teacherId;
+
+    private TeacherQueryVo teacherInfo;
 
     /**
      * 课程专业ID
@@ -99,7 +102,13 @@ public class CourseQueryVo {
 
     private List<TagQueryVo> tagList;
     //进度
-    private BigDecimal schedule;
-    //最近xuexi
-    private boolean visitedRecently;
+    private ProgressQueryVo progress;
+    //上次学习
+    private String lastLearn;
+
+    //是否已购买
+    private Boolean hasBuy;
+    //章节
+    private List<ChapterQueryVo> chapterList;
+
 }
