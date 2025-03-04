@@ -3,6 +3,9 @@ package com.git.hitzaki.education.biz.learnpath.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.git.hitzaki.education.biz.learnpath.entity.LearnPathDetailEntity;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +17,5 @@ import com.git.hitzaki.education.biz.learnpath.entity.LearnPathDetailEntity;
  */
 public interface LearnPathDetailMapper extends BaseMapper<LearnPathDetailEntity> {
 
+    List<LearnPathDetailEntity> queryById(@Param("detailId") List<Long> detailId);
 }

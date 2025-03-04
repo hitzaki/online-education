@@ -3,6 +3,10 @@ package com.git.hitzaki.education.biz.course.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.git.hitzaki.education.biz.course.entity.ChapterEntity;
+import com.git.hitzaki.education.model.course.vo.ChapterQueryVo;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +18,5 @@ import com.git.hitzaki.education.biz.course.entity.ChapterEntity;
  */
 public interface ChapterMapper extends BaseMapper<ChapterEntity> {
 
+    List<ChapterQueryVo> queryCourseChapter(@Param("id") Long id);
 }

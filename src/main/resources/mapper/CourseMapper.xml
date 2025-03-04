@@ -9,4 +9,33 @@
             #{id}
         </foreach>
     </select>
+    <select id="queryCourseProgressByCourse"
+            resultType="com.git.hitzaki.education.model.course.vo.ProgressQueryVo">
+        SELECT
+        c.id AS id,
+        c.title,
+        COUNT(DISTINCT v.id) AS 'all',
+        COUNT(DISTINCT cf.video_id) AS now
+        FROM
+        course c
+        LEFT JOIN
+        chapter ch ON c.id = ch.course_id
+        LEFT JOIN
+        video v ON ch.id = v.chapter_id
+        LEFT JOIN
+        chapter_finish cf ON v.id = cf.video_id AND cf.user_id = #{user} AND cf.course_id = c.id
+        WHERE
+        c.id IN
+        <foreach item="courseId" collection="courseIdList" open="(" separator="," close=")">
+            #{courseId}
+        </foreach>
+        GROUP BY
+        c.id
+    </select>
+    <select id="queryById" resultType="com.git.hitzaki.education.model.course.vo.CourseQueryVo"
+            parameterType="java.lang.Long">
+        select * from course
+        where delete_flag = 0 and id =#{id}
+    </select>
+
 </mapper>

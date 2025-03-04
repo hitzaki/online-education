@@ -2,9 +2,11 @@ package com.git.hitzaki.education.common.model;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.git.hitzaki.education.common.constant.RequestCodeConstant;
+import com.git.hitzaki.education.model.learnpath.vo.PathProgressQueryVo;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,4 +45,13 @@ public class PageResult<T> {
         return new PageResult<>(page.getRecords(),page.getTotal(), page.getCurrent(), page.getSize());
     }
 
- }
+    public static <T> PageResult<T> empty() {
+        return new PageResult<>(new ArrayList<>(),0L, 1L, 0L);
+    }
+
+
+
+    public <R> PageResult<R> convert(List<R> collect) {
+        return new PageResult<R>(collect,this.getCounts(), this.getPage(), this.getPageSize());
+    }
+}
