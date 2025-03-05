@@ -38,11 +38,17 @@ public class AuthApi {
         return BizResult.successByMsg("发送成功");
     }
 
-    // TODO 登录还要传递业务员的唯一码
     @ApiOperation("用户手机号登录")
     @PostMapping("/phoneLogin")
     public BizResult<Map<String, Object>> phoneLogin(@RequestBody LoginParam loginParam) {
         return BizResult.success(authCommonService.phoneLogin(loginParam));
+    }
+
+    @ApiOperation("业务员绑定")
+    @PostMapping("/salesmanBind")
+    public BizResult<Void> salesmanBind(@RequestBody LoginParam loginParam) {
+        authCommonService.salesmanBind(loginParam);
+        return BizResult.success();
     }
 
     // TODO 微信登陆

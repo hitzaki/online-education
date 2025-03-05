@@ -241,4 +241,14 @@ public class AuthBizService implements IAuthBizService {
         userInfoEntity.setUpdateTime(LocalDateTime.now());
         userInfoService.updateById(userInfoEntity);
     }
+
+    @Override
+    public void salesmanBind(String salesmanCode) {
+        UserInfoEntity userEntity = userInfoService.getByUserId(AuthInfoUtils.getLoginId());
+        Long salesmanId = adminAccountInfoService.selectBySalesmanCode(salesmanCode);
+        if (FormatValidationUtil.isId(salesmanId)){
+            userEntity.setSalesmanId(salesmanId);
+        }
+        userInfoService.updateById(userEntity);
+    }
 }

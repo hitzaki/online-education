@@ -28,4 +28,6 @@ public interface IAuthBizService {
     List<String> getRoleList(Long userId);
 
     void updateUserInfo(UserOperateParam operateParam);
+
+    void salesmanBind(String salesmanCode);
 }

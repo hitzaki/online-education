@@ -79,4 +79,9 @@ public class AuthCommonService {
         operateParam.checkUpdateInfo();
         authBizService.updateUserInfo(operateParam);
     }
+
+    public void salesmanBind(LoginParam loginParam) {
+        loginParam.checkSalesmanBind();
+        authBizService.salesmanBind(loginParam.getSalesmanCode());
+    }
 }

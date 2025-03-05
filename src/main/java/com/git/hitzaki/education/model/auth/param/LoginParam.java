@@ -62,4 +62,10 @@ public class LoginParam {
             CommonBizException.throwError(ExceptionEnum.COMMON_EXCEPTION);
         }
     }
+
+    public void checkSalesmanBind() {
+        if (StringUtils.isBlank(salesmanCode)){
+            CommonBizException.throwError(ExceptionEnum.COMMON_EXCEPTION);
+        }
+    }
 }
