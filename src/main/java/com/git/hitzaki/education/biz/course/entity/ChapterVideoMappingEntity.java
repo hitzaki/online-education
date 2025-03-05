@@ -42,6 +42,11 @@ public class ChapterVideoMappingEntity implements Serializable {
     private Long videoId;
 
     /**
+     * 名称
+     */
+    private String title;
+
+    /**
      * 排序
      */
     private Integer sort;

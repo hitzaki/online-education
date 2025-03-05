@@ -9,4 +9,9 @@
             #{id}
         </foreach>
     </select>
+    <select id="getChapterVideoName" resultType="java.lang.String">
+        select title
+        from chapter c left join chapter_video_mapping m on c.id=m.chapter_id
+        where c.delete_flag=0 and m.delete_flag=0 and c.course_id=#{course} and c.id=#{chapter} and m.video_id=#{video}
+    </select>
 </mapper>

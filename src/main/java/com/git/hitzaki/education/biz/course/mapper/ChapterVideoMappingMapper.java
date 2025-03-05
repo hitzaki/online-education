@@ -18,4 +18,6 @@ import java.util.List;
 public interface ChapterVideoMappingMapper extends BaseMapper<ChapterVideoMappingEntity> {
 
     List<ChapterVideoMappingEntity> queryByChapter(@Param("chapterIdList") List<Long> chapterIdList);
+
+    String getChapterVideoName(@Param("course")Long course, @Param("chapter")Long chapter,@Param("video") Long video);
 }

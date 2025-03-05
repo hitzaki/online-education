@@ -1,6 +1,7 @@
 package com.git.hitzaki.education.bus.course;
 
 import com.git.hitzaki.education.biz.course.CourseBizService;
+import com.git.hitzaki.education.biz.course.entity.ChapterVideoMappingEntity;
 import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.common.service.ICourseBizService;
@@ -14,6 +15,7 @@ import com.git.hitzaki.education.model.course.param.CoursePageQueryParam;
 import com.git.hitzaki.education.model.course.param.CourseProgressUpdateParam;
 import com.git.hitzaki.education.model.course.vo.ChapterQueryVo;
 import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
+import com.git.hitzaki.education.model.course.vo.LastLearnQueryVo;
 import com.git.hitzaki.education.model.course.vo.ProgressQueryVo;
 import com.git.hitzaki.education.model.tag.constant.TagTargetTypeEnum;
 import com.git.hitzaki.education.model.tag.vo.TagQueryVo;
@@ -99,7 +101,7 @@ public class CourseCommonService {
         //6 查询是否购买
         CompletableFuture<Boolean> buyFuture = CompletableFuture.supplyAsync(() -> checkCourseBuy(id),taskExecutor);
         //7 查询上次学习
-        CompletableFuture<String> lastLearnFuture = CompletableFuture.supplyAsync(() -> queryCourseLastLearn(id),taskExecutor);
+        CompletableFuture<LastLearnQueryVo> lastLearnFuture = CompletableFuture.supplyAsync(() -> queryCourseLastLearn(id),taskExecutor);
         CompletableFuture<Void> combinedFuture  = CompletableFuture.allOf(tagFuture, teacherFuture, progressFuture, chapterFuture, buyFuture, lastLearnFuture);
         try {
             combinedFuture.get();
@@ -109,7 +111,7 @@ public class CourseCommonService {
             ProgressQueryVo progress = progressFuture.join();
             List<ChapterQueryVo> chapterList = chapterFuture.join();
             Boolean isBuy = buyFuture.join();
-            String lastLearn = lastLearnFuture.join();
+            LastLearnQueryVo lastLearn = lastLearnFuture.join();
             courseQueryVo.setTagList(tagList);
             courseQueryVo.setTeacherInfo(teacher);
             courseQueryVo.setProgress(progress);
@@ -125,12 +127,12 @@ public class CourseCommonService {
     }
 
 
-    private String queryCourseLastLearn(Long courseId) {
-        return null;
+    private LastLearnQueryVo queryCourseLastLearn(Long courseId) {
+        return courseBizService.queryCourseLastLearn(courseId);
     }
 
     private Boolean checkCourseBuy(Long courseId) {
-        return null;
+        return courseBizService.checkCourseBuy(courseId);
     }
 
     public List<TagQueryVo> queryCourseTag(Long courseId) {
@@ -147,19 +149,21 @@ public class CourseCommonService {
     public List<ChapterQueryVo> queryCourseChapter(Long courseId) {
         List<ChapterQueryVo> chapterQueryVos = courseBizService.queryCourseChapter(courseId);
         List<Long> chapterIdList = chapterQueryVos.stream().map(ChapterQueryVo::getId).collect(Collectors.toList());
-        Map<Long,List<Long>> videoIdMap=courseBizService.queryChapterVideoId(chapterIdList);
+        Map<Long, List<ChapterVideoMappingEntity>> videoIdMap=courseBizService.queryChapterVideoId(chapterIdList);
 
         //todo 视频
         List<VideoQueryVo> videoList = new ArrayList<>();
         Map<Long, VideoQueryVo> videoMap = videoList.stream().collect(Collectors.toMap(VideoQueryVo::getId, Function.identity(), (v1, v2) -> v1));
 
         chapterQueryVos.forEach(item->{
-            List<Long> videoIdList = videoIdMap.getOrDefault(item.getCourseId(),new ArrayList<>());
+            List<ChapterVideoMappingEntity> videoIdList = videoIdMap.getOrDefault(item.getCourseId(),new ArrayList<>());
             List<VideoQueryVo> videoQueryVos = videoIdList.stream().map(video -> {
-                VideoQueryVo videoQueryVo = videoMap.get(video);
+                VideoQueryVo videoQueryVo = videoMap.get(video.getVideoId());
                 if (Objects.isNull(video)) {
                     throw new CommonBizException("查询为查询到视频的章节");
                 }
+                //重写视频名称
+                videoQueryVo.setTitle(video.getTitle());
                 return videoQueryVo;
             }).collect(Collectors.toList());
             item.setVideoList(videoQueryVos);

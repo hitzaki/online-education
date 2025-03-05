@@ -23,4 +23,6 @@ public interface CourseUserMappingMapper extends BaseMapper<CourseUserMappingEnt
 
 
     Page<CourseUserMappingEntity> pageQueryMyCouser(@Param("page") Page<CourseUserMappingEntity> page, @Param("condition")CoursePageQueryCondition condition);
+
+    CourseUserMappingEntity queryBuyCourseById(@Param("courseId")Long courseId, @Param("user")Long user);
 }

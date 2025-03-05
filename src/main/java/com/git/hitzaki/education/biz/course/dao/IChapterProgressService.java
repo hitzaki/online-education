@@ -14,4 +14,5 @@ import com.git.hitzaki.education.biz.course.entity.ChapterProgressEntity;
  */
 public interface IChapterProgressService extends IService<ChapterProgressEntity> {
 
+    ChapterProgressEntity queryLastLearn(Long courseId,Long loginId);
 }
