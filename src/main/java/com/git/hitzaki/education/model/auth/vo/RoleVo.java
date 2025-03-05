@@ -40,5 +40,6 @@ public class RoleVo implements Serializable {
 
     private LocalDateTime updateTime;
 
+    private Boolean isBind;
 
 }

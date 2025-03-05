@@ -3,10 +3,7 @@ package com.git.hitzaki.education.biz.auth.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.auth.dao.*;
 import com.git.hitzaki.education.biz.auth.entity.*;
-import com.git.hitzaki.education.biz.auth.mapper.AdminAccountInfoMapper;
-import com.git.hitzaki.education.biz.auth.mapper.PermissionMapper;
-import com.git.hitzaki.education.biz.auth.mapper.RoleMapper;
-import com.git.hitzaki.education.biz.auth.mapper.UserInfoMapper;
+import com.git.hitzaki.education.biz.auth.mapper.*;
 import com.git.hitzaki.education.common.enums.LoginTypeEnum;
 import com.git.hitzaki.education.common.exception.CommonBizException;
 import com.git.hitzaki.education.common.model.PageResult;
@@ -61,6 +58,8 @@ public class AuthManageBizService implements IAuthManageBizService {
 
     @Value("${my.rootUrl}")
     private String rootUrl;
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 
 
     @Override
@@ -158,7 +157,8 @@ public class AuthManageBizService implements IAuthManageBizService {
         rolePermissionEntity.setId(IdGenerator.generateId());
         rolePermissionEntity.setPermissionId(operateParam.getPermissionId());
         rolePermissionEntity.setRoleId(operateParam.getRoleId());
-        rolePermissionService.save(rolePermissionEntity);
+        // rolePermissionService.save(rolePermissionEntity);
+        permissionMapper.insertOrUpdateRolePermission(rolePermissionEntity);
     }
 
     @Override
@@ -172,7 +172,8 @@ public class AuthManageBizService implements IAuthManageBizService {
         userRoleEntity.setId(IdGenerator.generateId());
         userRoleEntity.setUserId(operateParam.getUserId());
         userRoleEntity.setRoleId(operateParam.getRoleId());
-        userRoleService.save(userRoleEntity);
+        roleMapper.insertOrUpdateUserRole(userRoleEntity);
+        // userRoleService.save(userRoleEntity);
     }
 
     @Override

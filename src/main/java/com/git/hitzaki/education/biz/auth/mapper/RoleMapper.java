@@ -4,6 +4,7 @@ package com.git.hitzaki.education.biz.auth.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.git.hitzaki.education.biz.auth.entity.RoleEntity;
+import com.git.hitzaki.education.biz.auth.entity.UserRoleEntity;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.model.auth.param.RoleQueryParam;
 import com.git.hitzaki.education.model.auth.vo.RoleVo;
@@ -28,4 +29,6 @@ public interface RoleMapper extends BaseMapper<RoleEntity> {
 
     Page<RoleVo> userRolePage(@Param("page") Page<RoleVo> page,
                                 @Param("param") RoleQueryParam queryParam);
+
+    void insertOrUpdateUserRole(@Param("param") UserRoleEntity userRoleEntity);
 }

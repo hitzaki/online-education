@@ -21,6 +21,8 @@ public class PermissionVo implements Serializable {
      */
     private Long parentId;
 
+    private Long permissionId;
+
     /**
      * 名称
      */
@@ -50,5 +52,6 @@ public class PermissionVo implements Serializable {
 
     private LocalDateTime createTime;
 
+    private Boolean isBind;
 
 }

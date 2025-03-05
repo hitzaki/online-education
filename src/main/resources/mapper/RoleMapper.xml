@@ -29,14 +29,13 @@
 
     <select id="userRolePage" resultType="com.git.hitzaki.education.model.auth.vo.RoleVo">
         SELECT
-        ro.*
-        FROM user_role ur
-        LEFT JOIN role ro
-        ON ro.id = ur.role_id
+        ur.id AS id, ur.update_time,
+        ro.role_name, ro.role_code,
+        IF(ur.user_id IS NOT NULL, true, false) AS isBind
+        FROM role ro
+        LEFT JOIN user_role ur ON ro.id = ur.role_id AND ur.user_id = #{param.userId} AND ur.delete_flag = 0
         WHERE
-        ur.user_id = #{param.userId}
-        AND ur.delete_flag = 0
-        AND ro.delete_flag = 0
+        ro.delete_flag = 0
         <if test="param.code != null and param.code != ''">
             AND ro.role_code = #{param.code}
         </if>
@@ -44,4 +43,13 @@
             AND ro.role_name = #{param.name}
         </if>
     </select>
+
+    <insert id="insertOrUpdateUserRole">
+        INSERT INTO user_role (id, user_id, role_id, delete_flag, update_time, create_time)
+        VALUES (#{param.id}, #{param.userId}, #{param.roleId}, 0, NOW(), NOW())
+        ON DUPLICATE KEY UPDATE
+        delete_flag = 0,
+        update_time = NOW()
+    </insert>
+
 </mapper>
