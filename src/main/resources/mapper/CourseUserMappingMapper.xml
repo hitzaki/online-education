@@ -10,4 +10,18 @@
         order by last_view desc
         limit 1
     </select>
+    <select id="pageQueryMyCouser"
+            resultType="com.git.hitzaki.education.biz.course.entity.CourseUserMappingEntity">
+        select * from course_user_mapping
+        where delete_flag = 0 and user_id = #{condition.userId} and status = 0
+        group by course_id
+        order by last_view desc
+    </select>
+    <select id="queryBuyCourseById"
+            resultType="com.git.hitzaki.education.biz.course.entity.CourseUserMappingEntity">
+        select * from course_user_mapping
+        where delete_flag = 0 and user_id=#{user}  and course_id=#{courseId}
+        limit 1
+    </select>
+
 </mapper>

@@ -3,6 +3,8 @@ package com.git.hitzaki.education.biz.teacher.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.git.hitzaki.education.biz.teacher.entity.TeacherEntity;
+import com.git.hitzaki.education.model.teacher.vo.TeacherQueryVo;
+import org.springframework.data.repository.query.Param;
 
 /**
  * <p>
@@ -14,4 +16,5 @@ import com.git.hitzaki.education.biz.teacher.entity.TeacherEntity;
  */
 public interface TeacherMapper extends BaseMapper<TeacherEntity> {
 
+    TeacherQueryVo queryTeacherById(@Param("id") Long id);
 }

@@ -41,4 +41,12 @@ public class AuthInfoUtils {
     public static String buildLoginInfo(String loginType, Long loginId){
         return loginType + SEPARATE + loginId;
     }
+
+    /**
+     * 是否登录
+     */
+    //TODO
+    public static boolean isLogin(){
+        return true;
+    }
 }

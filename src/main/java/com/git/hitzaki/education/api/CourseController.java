@@ -4,7 +4,9 @@ package com.git.hitzaki.education.api;
 import com.git.hitzaki.education.bus.course.CourseCommonService;
 import com.git.hitzaki.education.common.model.BizResult;
 import com.git.hitzaki.education.common.model.PageResult;
+import com.git.hitzaki.education.model.course.param.CourseDetailQueryParam;
 import com.git.hitzaki.education.model.course.param.CoursePageQueryParam;
+import com.git.hitzaki.education.model.course.param.CourseProgressUpdateParam;
 import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +44,33 @@ public class CourseController {
     public BizResult<PageResult<CourseQueryVo>> pageQueryCollectCourse(@RequestBody CoursePageQueryParam param) {
 
         return BizResult.success(courseCommonService.pageQueryCollectCourse(param));
+    }
+
+    /**
+     * 更新课程上次观看
+     */
+    @RequestMapping("/last/view")
+    public BizResult<?> updateCourseLastView(@RequestBody CourseProgressUpdateParam param) {
+        courseCommonService.updateCourseLastView(param);
+        return BizResult.success();
+    }
+
+    /**
+     * 更新课程完成度
+     */
+    @RequestMapping("/video/finish")
+    public BizResult<?> updateCourseVideoFinish(@RequestBody CourseProgressUpdateParam param) {
+        courseCommonService.updateCourseVideoFinish(param);
+        return BizResult.success();
+    }
+
+    /**
+     * 课程详情
+     */
+    @RequestMapping("/course/detail")
+    public BizResult<CourseQueryVo> queryCourseDetail(@RequestBody CourseDetailQueryParam param) {
+
+        return BizResult.success(courseCommonService.queryCourseDetail(param));
     }
 
 

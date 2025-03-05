@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hitzaki.education.biz.course.mapper.ChapterVideoMappingMapper">
+
+    <select id="queryByChapter" resultType="com.git.hitzaki.education.biz.course.entity.ChapterVideoMappingEntity">
+        select * from course_user_mapping where delete_flag=0
+        and chapter_id in
+        <foreach collection="chapterIdList" item="id" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <select id="getChapterVideoName" resultType="java.lang.String">
+        select title
+        from chapter c left join chapter_video_mapping m on c.id=m.chapter_id
+        where c.delete_flag=0 and m.delete_flag=0 and c.course_id=#{course} and c.id=#{chapter} and m.video_id=#{video}
+    </select>
+</mapper>

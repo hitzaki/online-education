@@ -1,5 +1,7 @@
 package com.git.hitzaki.education.model.learnpath.vo;
 
+import com.git.hitzaki.education.biz.learnpath.entity.LearnPathDetailEntity;
+import com.git.hitzaki.education.biz.learnpath.entity.PathDetailMappingEntity;
 import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
 import lombok.Data;
 
@@ -33,4 +35,15 @@ public class LearnPathDetailQueryVo {
     private String target;
 
     private List<CourseQueryVo> courseList;
+
+    public static LearnPathDetailQueryVo buildVoByEntity(LearnPathDetailEntity entity){
+        LearnPathDetailQueryVo vo =new LearnPathDetailQueryVo();
+        vo.setId(entity.getId());
+        vo.setPathId(entity.getPathId());
+        vo.setSort(entity.getSort());
+        vo.setTitle(entity.getTitle());
+        vo.setDescription(entity.getDescription());
+        vo.setTarget(entity.getTarget());
+        return vo;
+    }
 }
