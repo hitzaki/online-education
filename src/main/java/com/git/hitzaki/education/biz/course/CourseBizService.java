@@ -16,6 +16,7 @@ import com.git.hitzaki.education.model.course.condition.CoursePageQueryCondition
 import com.git.hitzaki.education.model.course.param.CourseProgressUpdateParam;
 import com.git.hitzaki.education.model.course.vo.ChapterQueryVo;
 import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
+import com.git.hitzaki.education.model.course.vo.LastLearnQueryVo;
 import com.git.hitzaki.education.model.course.vo.ProgressQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,6 +86,9 @@ public class CourseBizService implements ICourseBizService {
         if(CollectionUtils.isEmpty(courseIdList)){
             return new HashMap<>();
         }
+        if(!AuthInfoUtils.isLogin()){
+            return new HashMap<>();
+        }
         Long user = AuthInfoUtils.getLoginId();
 
         List<ProgressQueryVo> countBos = courseMapper.queryCourseProgressByCourse(courseIdList,user);
@@ -137,20 +141,55 @@ public class CourseBizService implements ICourseBizService {
     }
 
     @Override
-    public Map<Long, List<Long>> queryChapterVideoId(List<Long> chapterIdList) {
+    public Map<Long, List<ChapterVideoMappingEntity>> queryChapterVideoId(List<Long> chapterIdList) {
         if(CollectionUtils.isEmpty(chapterIdList)){
             return new HashMap<>();
         }
         List<ChapterVideoMappingEntity> chapterVideoMappings = chapterVideoMappingMapper.queryByChapter(chapterIdList);
+
         return chapterVideoMappings.stream()
-                .collect(Collectors.groupingBy(ChapterVideoMappingEntity::getChapterId))
+                .collect(Collectors.groupingBy(ChapterVideoMappingEntity::getChapterId)) // 根据id分组
                 .entrySet().stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         entry -> entry.getValue().stream()
-                                .sorted(Comparator.comparing(ChapterVideoMappingEntity::getSort))
-                                .map(ChapterVideoMappingEntity::getVideoId)
+                                .sorted(Comparator.comparing(ChapterVideoMappingEntity::getSort)) // 对每组根据sort排序
                                 .collect(Collectors.toList())
                 ));
+    }
+
+    @Override
+    public Boolean checkCourseBuy(Long courseId) {
+        if(!AuthInfoUtils.isLogin()){
+            return false;
+        }
+        Long loginId = AuthInfoUtils.getLoginId();
+        CourseUserMappingEntity entity= courseUserMappingMapper.queryBuyCourseById(courseId,loginId);
+        return Objects.nonNull(entity);
+    }
+
+    @Override
+    public LastLearnQueryVo queryCourseLastLearn(Long courseId) {
+        if(!AuthInfoUtils.isLogin()){
+            return new LastLearnQueryVo();
+        }
+        ChapterProgressEntity entity= iChapterProgressService.queryLastLearn(courseId,AuthInfoUtils.getLoginId());
+        if(Objects.isNull(entity)){
+            return new LastLearnQueryVo();
+        }
+        Long courseId1 = entity.getCourseId();
+        Long chapterId = entity.getChapterId();
+        Long videoId = entity.getVideoId();
+        String chapterVideoName = getChapterVideoName(courseId1, chapterId, videoId);
+
+        LastLearnQueryVo vo =new LastLearnQueryVo();
+        vo.setTitle(chapterVideoName);
+        vo.setChapterId(chapterId);
+        vo.setVideoId(videoId);
+        return vo;
+    }
+
+    public String getChapterVideoName(Long course,Long chapter,Long video){
+        return chapterVideoMappingMapper.getChapterVideoName(course,chapter,video);
     }
 }

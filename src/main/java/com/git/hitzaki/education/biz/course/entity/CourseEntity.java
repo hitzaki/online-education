@@ -63,6 +63,11 @@ public class CourseEntity implements Serializable {
     private Integer lessonNum;
 
     /**
+     * 等级
+     */
+    private Integer level;
+
+    /**
      * 视频总时长（秒）
      */
     private Integer durationSum;

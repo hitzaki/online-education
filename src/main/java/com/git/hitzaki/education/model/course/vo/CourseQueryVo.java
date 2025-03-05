@@ -45,6 +45,11 @@ public class CourseQueryVo {
     private Integer lessonNum;
 
     /**
+     * 等级
+     */
+    private Integer level;
+
+    /**
      * 视频总时长（秒）
      */
     private Integer durationSum;
@@ -104,7 +109,7 @@ public class CourseQueryVo {
     //进度
     private ProgressQueryVo progress;
     //上次学习
-    private String lastLearn;
+    private LastLearnQueryVo lastLearn;
 
     //是否已购买
     private Boolean hasBuy;

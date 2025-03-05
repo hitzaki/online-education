@@ -1,10 +1,12 @@
 package com.git.hitzaki.education.common.service;
 
+import com.git.hitzaki.education.biz.course.entity.ChapterVideoMappingEntity;
 import com.git.hitzaki.education.common.model.PageResult;
 import com.git.hitzaki.education.model.course.condition.CoursePageQueryCondition;
 import com.git.hitzaki.education.model.course.param.CourseProgressUpdateParam;
 import com.git.hitzaki.education.model.course.vo.ChapterQueryVo;
 import com.git.hitzaki.education.model.course.vo.CourseQueryVo;
+import com.git.hitzaki.education.model.course.vo.LastLearnQueryVo;
 import com.git.hitzaki.education.model.course.vo.ProgressQueryVo;
 
 import java.util.List;
@@ -52,5 +54,15 @@ public interface ICourseBizService {
     /**
      * 根据id查询课程章节视频
      * */
-    Map<Long, List<Long>> queryChapterVideoId(List<Long> chapterIdList);
+    Map<Long, List<ChapterVideoMappingEntity>> queryChapterVideoId(List<Long> chapterIdList);
+
+    /**
+     * 检查课程是否购买
+     * */
+    Boolean checkCourseBuy(Long courseId);
+
+    /**
+     * 检查课程上次观看
+     * */
+    LastLearnQueryVo queryCourseLastLearn(Long courseId);
 }
